@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Scripts.State
 {
@@ -9,8 +10,6 @@ namespace _Scripts.State
         public static GameManger Instance { get; private set; }
     
         readonly Dictionary<GameState, Action> _actions = new();
-
-        [SerializeField] GameObject _playerPrefab;
         
         public GameState gameState;
         
@@ -44,9 +43,20 @@ namespace _Scripts.State
             }
         }
 
+        void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        }
+
+        void QuitGame()
+        {
+            Debug.Log("Quitting Game!");
+            Application.Quit();
+        }
         void SubscribeGameStates()
         {
-            throw new NotImplementedException("GameStates not implemented yet");
+            this._actions.Add(GameState.MainMenu, LoadMainMenu);
+            this._actions.Add(GameState.Quitting, QuitGame);
 
         }
     }

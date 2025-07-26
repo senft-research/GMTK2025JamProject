@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="" />
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/UI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Buttons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Buttons/ButtonLogic.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Buttons/ButtonLogic.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Buttons/GameStateButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/UI/Buttons/GameStateButton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +46,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="30KGYUyLirTBxY37bwkIGCcq63p" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -109,6 +122,8 @@
       <workItem from="1753368899978" duration="326000" />
       <workItem from="1753369232293" duration="486000" />
       <workItem from="1753375288164" duration="263000" />
+      <workItem from="1753375565499" duration="23000" />
+      <workItem from="1753556002925" duration="5007000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -150,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753375535306</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="workspace.xml">
+      <option name="closed" value="true" />
+      <created>1753375582862</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1753375582862</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +205,7 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Scene Templates Settings upload" />
     <MESSAGE value="Addition of GameState.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Addition of GameState.cs" />
+    <MESSAGE value="workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
   </component>
 </project>

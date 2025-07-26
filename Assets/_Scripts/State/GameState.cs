@@ -2,5 +2,5 @@ using UnityEngine;
 
 public enum GameState
 {
-    MainMenu, PauseMenu, GameOverMenu, GameWinScreen, GameLoseScreen, StatsScreen
+    MainMenu, Settings, MainGame, Paused, GameOver, GameWin, GameLoss, StatsView, Quitting
 }
