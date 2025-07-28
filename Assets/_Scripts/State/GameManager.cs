@@ -55,9 +55,8 @@ namespace _Scripts.State
         }
         void SubscribeGameStates()
         {
-            this._actions.Add(GameState.MainMenu, LoadMainMenu);
-            this._actions.Add(GameState.Quitting, QuitGame);
-
+            _actions.Add(GameState.MainMenu, LoadMainMenu);
+            _actions.Add(GameState.Quitting, QuitGame);
         }
     }
 }
