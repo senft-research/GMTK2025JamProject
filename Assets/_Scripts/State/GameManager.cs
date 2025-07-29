@@ -8,11 +8,11 @@ namespace _Scripts.State
     public class GameManger : MonoBehaviour
     {
         public static GameManger Instance { get; private set; }
-    
+
         readonly Dictionary<GameState, Action> _actions = new();
-        
+
         public GameState gameState;
-        
+
         void Awake()
         {
             if (Instance != null && Instance != this)
@@ -24,14 +24,13 @@ namespace _Scripts.State
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
-          
+
             SubscribeGameStates();
             ChangeState(GameState.MainMenu);
         }
-    
+
         public void ChangeState(GameState newState)
         {
-
             if (_actions.TryGetValue(newState, out var action))
             {
                 gameState = newState;
@@ -53,6 +52,7 @@ namespace _Scripts.State
             Debug.Log("Quitting Game!");
             Application.Quit();
         }
+
         void SubscribeGameStates()
         {
             _actions.Add(GameState.MainMenu, LoadMainMenu);

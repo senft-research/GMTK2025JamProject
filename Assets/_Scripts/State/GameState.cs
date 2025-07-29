@@ -1,6 +1,15 @@
-using UnityEngine;
-
-public enum GameState
+namespace _Scripts.State
 {
-    MainMenu, Settings, MainGame, Paused, GameOver, GameWin, GameLoss, StatsView, Quitting
+    public enum GameState
+    {
+        MainMenu,
+        Settings,
+        MainGame,
+        Paused,
+        GameOver,
+        GameWin,
+        GameLoss,
+        StatsView,
+        Quitting,
+    }
 }

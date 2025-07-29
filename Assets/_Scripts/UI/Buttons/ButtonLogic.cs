@@ -10,11 +10,12 @@ namespace _Scripts.UI.Buttons
         [FormerlySerializedAs("_button")]
         [SerializeField, Self]
         protected Button button;
-        
+
         void Awake()
         {
             button.onClick.AddListener(OnClick);
         }
+
         protected abstract void OnClick();
     }
 }
