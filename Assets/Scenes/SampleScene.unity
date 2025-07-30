@@ -119,6 +119,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &196586983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196586985}
+  - component: {fileID: 196586984}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &196586984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196586983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b260c8690faf4977a766fd629f373595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionCheck: 1
+  defaultCapacity: 10
+  maxPoolSize: 100
+  maxSoundInstances: 30
+  _soundEmitterPrefab: {fileID: 380799582828650852, guid: a88bd98c7ca7a016aae36fbd5cce55ca, type: 3}
+--- !u!4 &196586985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196586983}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 797.9847, y: 548.93933, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266283456
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +655,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn:
     _implementer: {fileID: 266283457}
+  _soundData:
+    clip: {fileID: 8300000, guid: ddb48be59dad70da88cb6e1169ed9aee, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 36c458cd21672360a8700ce152039313, type: 2}
+    loop: 0
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 1
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
 --- !u!4 &833548669
 Transform:
   m_ObjectHideFlags: 0
@@ -761,6 +833,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn:
     _implementer: {fileID: 1061733310}
+  _soundData:
+    clip: {fileID: 8300000, guid: 1183652a67f11ad0cbb87b08bbe95755, type: 3}
+    mixerGroup: {fileID: 24300002, guid: 36c458cd21672360a8700ce152039313, type: 2}
+    loop: 0
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 0.51
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
 --- !u!1001 &3484119735811800409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -835,3 +930,4 @@ SceneRoots:
   - {fileID: 1163758249}
   - {fileID: 1754602124}
   - {fileID: 833548669}
+  - {fileID: 196586985}

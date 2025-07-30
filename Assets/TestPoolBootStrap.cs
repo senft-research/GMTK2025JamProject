@@ -1,4 +1,5 @@
 using _Scripts.Util.Pools;
+using _Scripts.Util.Pools.Audio;
 using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,8 +8,10 @@ public class TestPoolBootStrap : ValidatedMonoBehaviour
 {
     [SerializeField, Child]
     InterfaceRef<IPoolable> objectToSpawn;
-    
-    
+
+    [SerializeField]
+    SoundData _soundData;
+
     void Update()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -16,13 +19,19 @@ public class TestPoolBootStrap : ValidatedMonoBehaviour
             GameObject obj = ObjectPoolManager.Instance.SpawnObject(
                 objectToSpawn.Value,
                 Vector3.zero,
-                Quaternion.identity
+                Quaternion.Euler(90f, 0f, 0f)
             );
 
             if (obj.TryGetComponent<Rigidbody>(out var rb))
             {
-                rb.linearVelocity = Vector3.forward * 10f;
+                rb.freezeRotation = true;
+                rb.linearVelocity = Vector3.forward * 100f;
             }
+            SoundManager
+                .Instance.CreateSoundBuilder()
+                .WithPosition(Vector3.zero)
+                .WithRandomPitch()
+                .Play(_soundData);
         }
     }
 }
