@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Scripts.Util.Pools
 {
-    public class ObjectPoolManager : ValidatedMonoBehaviour
+    public class ObjectPoolManager : MonoBehaviour
     {
         public static ObjectPoolManager Instance { get; private set; }
 
@@ -52,21 +52,22 @@ namespace _Scripts.Util.Pools
             if (spawnableObject == null)
             {
                 spawnableObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
-                spawnableObject.SetActive(true);
             }
             else
             {
                 spawnableObject.transform.position = spawnPosition;
                 spawnableObject.transform.rotation = spawnRotation;
                 pool.InactiveObjects.Remove(spawnableObject);
-                spawnableObject.SetActive(true);
             }
+            spawnableObject.SetActive(true);
             spawnableObject.GetComponent<IPoolable>().InitReturnLogic();
             return spawnableObject;
         }
 
-        public void ReturnObjectToPool(GameObject objectToReturn)
+        public void ReturnObjectToPool(IPoolable poolableToReturn)
         {
+            GameObject objectToReturn = poolableToReturn.PoolableObject();
+
             string objectName = objectToReturn.name.Substring(0, objectToReturn.name.Length - 7);
 
             if (!_objectPools.TryGetValue(objectName, out var pool))

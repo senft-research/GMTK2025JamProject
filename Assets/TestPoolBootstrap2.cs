@@ -3,7 +3,7 @@ using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TestPoolBootStrap : ValidatedMonoBehaviour
+public class TestPoolBootStrap2 : ValidatedMonoBehaviour
 {
     [SerializeField, Child]
     InterfaceRef<IPoolable> objectToSpawn;
@@ -11,7 +11,7 @@ public class TestPoolBootStrap : ValidatedMonoBehaviour
     
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             GameObject obj = ObjectPoolManager.Instance.SpawnObject(
                 objectToSpawn.Value,
