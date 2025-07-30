@@ -38,13 +38,18 @@ namespace _Scripts.State
             }
             else
             {
-                Debug.LogWarning($"No action defined for the state: {gameState}");
+                Debug.LogWarning($"No action defined for the state: {newState}");
             }
         }
 
         void LoadMainMenu()
         {
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        }
+
+        void LoadMainGame()
+        {
+            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
         }
 
         void QuitGame()
@@ -56,6 +61,7 @@ namespace _Scripts.State
         void SubscribeGameStates()
         {
             _actions.Add(GameState.MainMenu, LoadMainMenu);
+            _actions.Add(GameState.MainGame, LoadMainGame);
             _actions.Add(GameState.Quitting, QuitGame);
         }
     }

@@ -656,8 +656,8 @@ MonoBehaviour:
   objectToSpawn:
     _implementer: {fileID: 266283457}
   _soundData:
-    clip: {fileID: 8300000, guid: ddb48be59dad70da88cb6e1169ed9aee, type: 3}
-    mixerGroup: {fileID: 24300002, guid: 36c458cd21672360a8700ce152039313, type: 2}
+    clip: {fileID: 8300000, guid: bee6b73f5a5d7a83baa1d12786929ed6, type: 3}
+    mixerGroup: {fileID: 24300002, guid: a359baff02990085c923fec3c12d3b06, type: 2}
     loop: 0
     playOnAwake: 0
     frequentSound: 0
@@ -666,7 +666,7 @@ MonoBehaviour:
     bypassListenerEffects: 0
     bypassReverbZones: 0
     priority: 128
-    volume: 1
+    volume: 0.1
     pitch: 1
     panStereo: 0
     spatialBlend: 0
@@ -834,8 +834,8 @@ MonoBehaviour:
   objectToSpawn:
     _implementer: {fileID: 1061733310}
   _soundData:
-    clip: {fileID: 8300000, guid: 1183652a67f11ad0cbb87b08bbe95755, type: 3}
-    mixerGroup: {fileID: 24300002, guid: 36c458cd21672360a8700ce152039313, type: 2}
+    clip: {fileID: 8300000, guid: 1ef88e3739a2342d2a823b3d6166bd4c, type: 3}
+    mixerGroup: {fileID: 24300002, guid: a359baff02990085c923fec3c12d3b06, type: 2}
     loop: 0
     playOnAwake: 0
     frequentSound: 0
@@ -844,7 +844,7 @@ MonoBehaviour:
     bypassListenerEffects: 0
     bypassReverbZones: 0
     priority: 128
-    volume: 0.51
+    volume: 0.1
     pitch: 1
     panStereo: 0
     spatialBlend: 0
