@@ -6,17 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,6 +35,12 @@
     &quot;accountId&quot;: &quot;e1e9873a-30e6-4613-a6fc-9050c58ad723&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/UI/Buttons/ButtonLogic.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -47,9 +55,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-objectpools&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/jordan/GMTK2025JamProject&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -127,7 +136,9 @@
       <workItem from="1753556002925" duration="5007000" />
       <workItem from="1753565117648" duration="44000" />
       <workItem from="1753609740874" duration="211000" />
-      <workItem from="1753823807218" duration="305000" />
+      <workItem from="1753823807218" duration="1036000" />
+      <workItem from="1753824918798" duration="7260000" />
+      <workItem from="1753838493714" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -185,7 +196,31 @@
       <option name="project" value="LOCAL" />
       <updated>1753565148803</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Resharpier Reformats">
+      <option name="closed" value="true" />
+      <created>1753824262657</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1753824262657</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Initial pool logic">
+      <option name="closed" value="true" />
+      <created>1753837036146</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1753837036146</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Forgot Sample Scene">
+      <option name="closed" value="true" />
+      <created>1753837056913</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1753837056913</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +229,6 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
-    <option name="hasUnityReference" value="true" />
     <option name="unityProject" value="true" />
     <option name="unityProjectFolder" value="true" />
   </component>
@@ -219,6 +253,9 @@
     <MESSAGE value="Addition of GameState.cs" />
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="Continuing setup of base." />
-    <option name="LAST_COMMIT_MESSAGE" value="Continuing setup of base." />
+    <MESSAGE value="Resharpier Reformats" />
+    <MESSAGE value="Initial pool logic" />
+    <MESSAGE value="Forgot Sample Scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="Forgot Sample Scene" />
   </component>
 </project>
