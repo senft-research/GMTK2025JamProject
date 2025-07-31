@@ -4,28 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeTestBootstrap.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeTestBootstrap.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/TrackingModule.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/TrackingModule.cs.meta" afterDir="false" />
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)">
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/AudioExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/AudioExtensions.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/ICollidable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/ICollidable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/EntityDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/EntityDefinition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/GameEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/GameEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/EntitySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/EntitySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/EntitySpawner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/EntitySpawner.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/ITrackable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/ITrackable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewAudioMixer.mixer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewAudioMixer.mixer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SoundEmitter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SoundEmitter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +44,13 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/SoundData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/ProjectSettings/EditorBuildSettings.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -161,7 +150,7 @@
       <workItem from="1753823807218" duration="1036000" />
       <workItem from="1753824918798" duration="7260000" />
       <workItem from="1753838493714" duration="4000" />
-      <workItem from="1753971393186" duration="16355000" />
+      <workItem from="1753971393186" duration="18432000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -259,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753911544391</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)">
+      <option name="closed" value="true" />
+      <created>1753989298518</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1753989298518</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +296,7 @@
     <MESSAGE value="Refactoring some files" />
     <MESSAGE value="- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tommorow." />
     <MESSAGE value="- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tomorrow.&#10;- Focus on next commit should be on Grid.cs &amp; ITrackable.cs (God help my soul)!" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tomorrow.&#10;- Focus on next commit should be on Grid.cs &amp; ITrackable.cs (God help my soul)!" />
+    <MESSAGE value="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)" />
   </component>
 </project>
