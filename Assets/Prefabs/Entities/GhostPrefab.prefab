@@ -122,10 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a813a28c00c90e0bac400512b86614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  distanceBetween: 0.01
+  MoveSpeed: 10
   SteerSpeed: 180
   BodySpeed: 5
-  Gap: 20
+  Gap: 151
   BodyPrefab: {fileID: 4892652117957592343, guid: a5243bc6854e7ab9694fac9b71d7a2fb, type: 3}
   isGhost: 0
 --- !u!54 &8657156061025365253

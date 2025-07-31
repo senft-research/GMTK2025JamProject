@@ -11,7 +11,7 @@ namespace _Scripts.Model.Entities.Snake
 
         public GameObject PoolableObject() => gameObject;
 
-        protected override void OnCollide()
+        protected override void OnCollide(Collider? other = null)
         {
             if (isSpawning)
                 return;

@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)">
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/AudioExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/AudioExtensions.cs.meta" afterDir="false" />
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Changes to scene also commited">
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/CollideablePickup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/CollideablePickup.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/Picker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/Picker.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NewAudioMixer.mixer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NewAudioMixer.mixer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostPrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SoundEmitter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SoundEmitter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SnakeTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SnakeTestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,10 +51,13 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/SnakeTestScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/SnakeTestScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/SoundData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/ProjectSettings/EditorBuildSettings.asset" root0="SKIP_HIGHLIGHTING" />
@@ -150,7 +160,7 @@
       <workItem from="1753823807218" duration="1036000" />
       <workItem from="1753824918798" duration="7260000" />
       <workItem from="1753838493714" duration="4000" />
-      <workItem from="1753971393186" duration="18432000" />
+      <workItem from="1753971393186" duration="28726000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -256,7 +266,23 @@
       <option name="project" value="LOCAL" />
       <updated>1753989298518</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added Initial Sound logic for music (not going any further until separate branch)">
+      <option name="closed" value="true" />
+      <created>1753991551499</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1753991551499</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Changes to scene also commited">
+      <option name="closed" value="true" />
+      <created>1753991566150</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1753991566150</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +323,8 @@
     <MESSAGE value="- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tommorow." />
     <MESSAGE value="- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tomorrow.&#10;- Focus on next commit should be on Grid.cs &amp; ITrackable.cs (God help my soul)!" />
     <MESSAGE value="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)" />
+    <MESSAGE value="Added Initial Sound logic for music (not going any further until separate branch)" />
+    <MESSAGE value="Changes to scene also commited" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes to scene also commited" />
   </component>
 </project>

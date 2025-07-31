@@ -21,9 +21,9 @@ public abstract class Collideable : MonoBehaviour
     {
         if (collisionTagNames.Contains(other.tag))
         {
-            OnCollide();
+            OnCollide(other);
         }
     }
 
-    protected abstract void OnCollide();
+    protected abstract void OnCollide(Collider? other = null);
 }

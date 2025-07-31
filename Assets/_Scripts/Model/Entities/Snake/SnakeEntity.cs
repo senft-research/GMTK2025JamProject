@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using _Scripts.Model.Collidables.Trash;
+using _Scripts.Model.Pickables;
 using _Scripts.Model.Trackables;
 using _Scripts.Util.Pools;
 using UnityEngine;
 
 namespace _Scripts.Model.Entities.Snake
 {
-    public class SnakeEntity : GameEntity
+    public class SnakeEntity : GameEntity, IPickableVisitor
     {
         public Vector3 InitialPosition { get; private set; }
         public Quaternion InitialRotation { get; private set; }
         SnakeInputFrame currentInputFrame;
 
+        public float distanceBetween;
         public float MoveSpeed = 5;
         public float SteerSpeed = 180;
         public float BodySpeed = 5;
@@ -67,13 +71,31 @@ namespace _Scripts.Model.Entities.Snake
             float steerDirection = currentInputFrame.steerInput;
             float deltaTime = currentInputFrame.deltaTime;
 
-            // Move the head
-            transform.position += transform.forward * MoveSpeed * deltaTime;
-            transform.Rotate(Vector3.up * steerDirection * SteerSpeed * deltaTime);
-            PositionsHistory.Insert(0, transform.position);
+            
 
-            // Move the body
-            int index = 0;
+            transform.position += transform.forward * (MoveSpeed * deltaTime);
+            transform.Rotate(Vector3.up * (steerDirection * SteerSpeed * deltaTime));
+
+            Vector3 currentFrontPosition = PositionsHistory.First();
+            Vector3 difference = transform.position - currentFrontPosition;
+            float distanceMoved = difference.magnitude;
+
+            if (distanceMoved >= distanceBetween)
+            {
+                int pointsToInsert = Mathf.FloorToInt(distanceMoved / distanceBetween);
+                Vector3 direction = difference.normalized;
+
+                for (int i = 1; i <= pointsToInsert; i++)
+                {
+                    Vector3 newPoint = currentFrontPosition + direction * (distanceBetween * i);
+                    PositionsHistory.Insert(0,newPoint);
+                }
+            }
+
+            PositionsHistory.Add(transform.position);
+
+      
+            int index = 1;
             foreach (var body in BodyParts)
             {
                 Vector3 point = PositionsHistory[
@@ -81,7 +103,7 @@ namespace _Scripts.Model.Entities.Snake
                 ];
                 Vector3 moveDirection = point - body.transform.position;
                 Vector3 newPosition =
-                    body.transform.position + moveDirection * BodySpeed * deltaTime;
+                    body.transform.position + moveDirection;
 
                 if (moveDirection.sqrMagnitude > 0.001f)
                 {
@@ -95,12 +117,13 @@ namespace _Scripts.Model.Entities.Snake
 
                 index++;
             }
+            if(PositionsHistory.Count < 5000) return;
+            PositionsHistory.RemoveRange(5000, PositionsHistory.Count - 5001);
         }
 
         void Update()
         {
             float steerDirection = 0f;
-            float deltaTime = Time.deltaTime;
 
             if (TrackingModule.IsTracking())
             {
@@ -116,6 +139,7 @@ namespace _Scripts.Model.Entities.Snake
             else if (TrackingModule.IsReplaying() && isGhost)
             {
                 currentInputFrame = TrackingModule.GetFrameAction();
+                currentInputFrame.deltaTime = Time.fixedDeltaTime;
                 if (currentInputFrame.spawnedObject)
                 {
                     GrowSnake();
@@ -177,5 +201,17 @@ namespace _Scripts.Model.Entities.Snake
                 ObjectPoolManager.Instance.ReturnObjectToPool(bodyPart);
             }
         }
+
+        public void Visit(IPickable pickable)
+        {
+            Debug.Log("Visiting!");
+            if (pickable is TrashItem trash)
+            {
+                MoveSpeed += trash.speedBoost;
+            }
+
+        }
+        
+  
     }
 }
