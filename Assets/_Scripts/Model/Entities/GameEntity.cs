@@ -7,11 +7,12 @@ namespace _Scripts.Model.Entities
 {
     public class GameEntity : ValidatedMonoBehaviour
     {
-        readonly Dictionary<Type, IEntityModule> _modules;
+        readonly Dictionary<Type, IEntityModule> _modules = new();
 
-        public void Initialize(EntityDefinition definition)
+        public virtual void Initialize(EntityDefinition definition)
         {
             IEntityModule[] modules = GetComponentsInChildren<IEntityModule>(true);
+            Debug.Log($"Modules found: {modules.Length}");
             foreach (var module in modules)
             {
                 module.Initialize(definition);
