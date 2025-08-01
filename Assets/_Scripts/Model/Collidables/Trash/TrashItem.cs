@@ -2,39 +2,22 @@ using System;
 using System.Collections.Generic;
 using _Scripts.Model.Entities.Snake;
 using _Scripts.Scriptables;
+using _Scripts.Util.Pools;
 using _Scripts.Util.Pools.Audio;
 using KBCore.Refs;
 using UnityEngine;
 
 namespace _Scripts.Model.Collidables.Trash
 {
-    public class TrashItem : CollideablePickup
+    public class TrashItem : CollideablePickup, IPoolable
     {
-        [SerializeField]
         SoundData soundData;
 
-        [SerializeField]
-        List<ScriptableObject> trashEffects;
+        List<ScriptableObject> trashEffectsScriptables;
 
         List<ITrashEffect> _trashEffects = new();
-
-        void Start()
-        {
-            foreach (var scriptableObject in trashEffects)
-            {
-                if (scriptableObject is ITrashEffect effect)
-                {
-                    _trashEffects.Add(effect);
-                }
-            }
-        }
-
         public List<ITrashEffect> Effects() => _trashEffects;
-        public void PrintTest()
-        {
-            Debug.Log($"Hello, you visited {gameObject.name}!");
-        } 
-        
+ 
         protected override void OnCollide(Collider? other = null)
         {
             base.OnCollide(other);
@@ -44,9 +27,30 @@ namespace _Scripts.Model.Collidables.Trash
         void PickupTrash()
         {
             SoundManager.Instance.CreateSoundBuilder().WithPosition(gameObject.transform.position).Play(soundData);
-            Destroy(gameObject);
+            ObjectPoolManager.Instance.ReturnObjectToPool(this);
         }
-        
-        
+
+        public void SetupTrash(TrashDefinition definition)
+        {
+            soundData = definition.pickupAudioData;
+            trashEffectsScriptables = definition.trashEffects;
+
+            _trashEffects.Clear();
+            foreach (var scriptableObject in trashEffectsScriptables)
+            {
+                if (scriptableObject is ITrashEffect effect)
+                {
+                    _trashEffects.Add(effect);
+                }
+            }
+        }
+
+
+        public void InitReturnLogic()
+        {
+            
+        }
+
+        public GameObject PoolableObject() => gameObject;
     }
 }

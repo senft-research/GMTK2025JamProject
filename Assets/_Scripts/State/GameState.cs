@@ -6,6 +6,7 @@ namespace _Scripts.State
         Settings,
         MainGame,
         Paused,
+        UnPause,
         GameOver,
         GameWin,
         GameLoss,

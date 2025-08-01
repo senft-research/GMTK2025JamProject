@@ -5,15 +5,17 @@ using System.Linq;
 using _Scripts.Model.Collidables.Trash;
 using _Scripts.Model.Pickables;
 using _Scripts.Model.Trackables;
+using _Scripts.State.Pausing;
 using _Scripts.Util.Pools;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace _Scripts.Model.Entities.Snake
 {
-    public class SnakeEntity : GameEntity, IPickableVisitor
+    public class SnakeEntity : GameEntity, IPickableVisitor, IPausable
     {
         public bool isGhost;
+
 
         #region Position Properties
         public Vector3 InitialPosition { get; private set; }
@@ -64,9 +66,21 @@ namespace _Scripts.Model.Entities.Snake
             
         }
 
+        void OnEnable()
+        {
+            GamePauseLogicManager.Instance.Register(this);
+        }
+
+        void OnDisable()
+        {
+            GamePauseLogicManager.Instance.Unregister(this);
+
+        }
+
         void FixedUpdate()
         {
             {
+                if (GamePauseLogicManager.Instance.IsPaused) return;
                 float steerDirection = Input.GetAxis("Horizontal");
 
                 if (TrackingModule.IsTracking())
@@ -270,27 +284,36 @@ namespace _Scripts.Model.Entities.Snake
 
         private List<Vector3> debugTrailPoints = new();
 
-#if UNITY_EDITOR
-        void OnDrawGizmos()
+// #if UNITY_EDITOR
+//         void OnDrawGizmos()
+//         {
+//             if (debugTrailPoints == null || debugTrailPoints.Count < 2)
+//                 return;
+//
+//             if (!isGhost)
+//             {
+//                 Gizmos.color = Color.green;
+//
+//             }
+//             else
+//             {
+//                 Gizmos.color = Color.red;
+//             }
+//
+//             foreach (var point in debugTrailPoints)
+//             {
+//                 Gizmos.DrawSphere(point, 0.1f);
+//             }
+//         }
+// #endif
+        public void HandleResume()
         {
-            if (debugTrailPoints == null || debugTrailPoints.Count < 2)
-                return;
-
-            if (!isGhost)
-            {
-                Gizmos.color = Color.green;
-
-            }
-            else
-            {
-                Gizmos.color = Color.red;
-            }
-
-            foreach (var point in debugTrailPoints)
-            {
-                Gizmos.DrawSphere(point, 0.1f);
-            }
+            //TODO logic to resume animations and sounds etc
         }
-#endif
+
+        public void HandlePause()
+        {
+            //TODO logic to pause animations and sounds etc
+        }
     }
 }
