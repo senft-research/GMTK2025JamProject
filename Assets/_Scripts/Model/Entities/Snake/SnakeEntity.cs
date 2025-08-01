@@ -23,6 +23,7 @@ namespace _Scripts.Model.Entities.Snake
         List<Vector3> PositionsHistory = new();
         SnakeInputFrame _currentInputFrame;
         bool firstInputFrameMade = false;
+        int maximumPositionHistoryLength = 20000;
         #endregion
 
         #region Speed Properties
@@ -177,9 +178,9 @@ namespace _Scripts.Model.Entities.Snake
 
 #endif
 
-                if (PositionsHistory.Count < 5000)
+                if (PositionsHistory.Count < maximumPositionHistoryLength)
                     return;
-                PositionsHistory.RemoveRange(5000, PositionsHistory.Count - 5001);
+                PositionsHistory.RemoveRange(maximumPositionHistoryLength, PositionsHistory.Count - (maximumPositionHistoryLength+1));
             }
         }
         
