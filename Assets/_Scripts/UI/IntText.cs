@@ -1,4 +1,4 @@
-//using TMPro;
+using TMPro;
 using UnityEngine;
 
 
@@ -8,7 +8,7 @@ namespace _Scripts.UI
     {
         public UiElementType textType;
 
-        //protected TextMeshProUGUI _text;
+        protected TMP_Text _text;
         
         public UiElementType GetElementType()
         {
@@ -17,7 +17,7 @@ namespace _Scripts.UI
         
         public void ChangeText(string text)
         {
-            //_text.text
+            
         }
 
         public int GetIntegerText()
