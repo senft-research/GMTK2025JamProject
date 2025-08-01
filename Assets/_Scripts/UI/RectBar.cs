@@ -1,12 +1,10 @@
-using System;
-using _Scripts.UI.Buttons;
 using UnityEngine;
 
 namespace _Scripts.UI
 {
     public class RectBar : MonoBehaviour, IUiBar
     {
-        public BarType barType;
+        public UiElementType barType;
 
         protected float MaxSize;
 
@@ -14,15 +12,12 @@ namespace _Scripts.UI
 
         void Start()
         {
-            UiBarManager.Instance.RegisterBar(this);
+            UiBarManager.Instance.RegisterElement(this);
             MaxSize = gameObject.GetComponentInParent<RectTransform>().rect.width;
             RectTransform = gameObject.GetComponent<RectTransform>();
         }
         
-        public BarType GetBarType()
-        {
-            return this.barType;
-        }
+        
 
         public void ChangeBarPercent(float percent)
         {
@@ -32,6 +27,11 @@ namespace _Scripts.UI
         public float GetBarPercent()
         {
             return 1 - (-RectTransform.offsetMax.x / MaxSize);
+        }
+
+        public UiElementType GetElementType()
+        {
+            return this.barType;
         }
     }
 }

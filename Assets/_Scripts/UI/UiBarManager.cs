@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using _Scripts.UI.Buttons;
 using UnityEngine;
 
 namespace _Scripts.UI
@@ -7,9 +6,9 @@ namespace _Scripts.UI
     public class UiBarManager : MonoBehaviour
     {
         public static UiBarManager Instance { get; private set; }
-        
-        private Dictionary<BarType, IUiBar> _bars;
 
+        private Dictionary<UiElementType, IUiElement> _elements;
+        
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -20,23 +19,43 @@ namespace _Scripts.UI
             else
             {
                 Instance = this;
-                _bars = new Dictionary<BarType, IUiBar>();
+                _elements = new Dictionary<UiElementType, IUiElement>();
             }
         }
 
-        public void RegisterBar(IUiBar bar)
+        public void RegisterElement(IUiElement element)
         {
-            this._bars.Add(bar.GetBarType(), bar);
+            this._elements.Add(element.GetElementType(), element);
         }
 
-        public void UnregisterBar(BarType barType)
+        public void UnregisterElement(UiElementType type)
         {
-            this._bars.Remove(barType);
+            this._elements.Remove(type);
         }
 
-        public void ChangeBarPercent(BarType barType, float percent)
+        public void ChangeBarPercent(UiElementType barType, float percent)
         {
-            _bars[barType].ChangeBarPercent(percent);
+            try
+            {
+                ((IUiBar)_elements[barType]).ChangeBarPercent(percent);
+
+            }
+            catch (System.InvalidCastException)
+            {
+                Debug.LogError("UiBarManager: Given UiElementType is Not an instance of IUiBar!");
+            }
+        }
+
+        public void ChangeText(UiElementType type, string text)
+        {
+            try
+            {
+                ((IUIText)_elements[type]).ChangeText(text);
+            }
+            catch (System.InvalidCastException)
+            {
+                Debug.LogError("UiBarManager: Given UiElementType is not an instance of IUIText!");
+            }
         }
     }
 }

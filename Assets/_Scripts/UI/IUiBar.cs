@@ -1,9 +1,7 @@
-namespace _Scripts.UI.Buttons
+namespace _Scripts.UI
 {
-    public interface IUiBar
+    public interface IUiBar : IUiElement
     {
-        public BarType GetBarType();
-
         public void ChangeBarPercent(float percent);
 
         public float GetBarPercent();
