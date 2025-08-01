@@ -6,7 +6,7 @@ namespace _Scripts.Scriptables
 {
     [CreateAssetMenu(
         fileName = "New Speed Effect",
-        menuName = "Game/Trash Effects",
+        menuName = "Game/Trash/Effects/Speed Effect",
         order = 0
     )]
     public class SpeedEffect : ScriptableObject, ITrashEffect

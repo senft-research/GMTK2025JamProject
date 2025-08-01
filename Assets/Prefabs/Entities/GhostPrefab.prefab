@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -11.78}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,13 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a813a28c00c90e0bac400512b86614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceBetween: 0.01
-  MoveSpeed: 10
-  SteerSpeed: 180
-  BodySpeed: 5
-  Gap: 151
-  BodyPrefab: {fileID: 4892652117957592343, guid: a5243bc6854e7ab9694fac9b71d7a2fb, type: 3}
   isGhost: 0
+  steerSpeed: 180
+  distanceBetween: 0.01
+  gap: 190
+  bodyPrefab: {fileID: 4892652117957592343, guid: a5243bc6854e7ab9694fac9b71d7a2fb, type: 3}
 --- !u!54 &8657156061025365253
 Rigidbody:
   m_ObjectHideFlags: 0

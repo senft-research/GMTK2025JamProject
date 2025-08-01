@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using KBCore.Refs;
 using UnityEngine;
 
 namespace _Scripts.Util.Pools
@@ -23,6 +22,7 @@ namespace _Scripts.Util.Pools
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
+            
         }
 
         public GameObject SpawnObject(
@@ -51,10 +51,12 @@ namespace _Scripts.Util.Pools
             GameObject? spawnableObject = pool.InactiveObjects.FirstOrDefault();
             if (spawnableObject == null)
             {
+                Debug.Log("Instantiating new object!");
                 spawnableObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             }
             else
             {
+                Debug.Log($"Found pool item {spawnableObject.name}");
                 spawnableObject.transform.position = spawnPosition;
                 spawnableObject.transform.rotation = spawnRotation;
                 pool.InactiveObjects.Remove(spawnableObject);

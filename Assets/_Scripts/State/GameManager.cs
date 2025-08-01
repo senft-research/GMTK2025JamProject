@@ -13,6 +13,8 @@ namespace _Scripts.State
 
         public GameState gameState;
 
+        public MainGameManager MainGameManager { private get; set; }
+
         void Awake()
         {
             if (Instance != null && Instance != this)
@@ -26,6 +28,7 @@ namespace _Scripts.State
             }
 
             SubscribeGameStates();
+            SceneManager.sceneLoaded += OnSceneLoaded;
             ChangeState(GameState.MainMenu);
         }
 
@@ -42,15 +45,25 @@ namespace _Scripts.State
             }
         }
 
+        void MainGameStartTest()
+        {
+            SceneManager.LoadScene("GameGui", LoadSceneMode.Additive);
+            MainGameManager.StartNewGame();
+        }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        {
+
+            if (scene.name == "MainGameScene")
+            {
+                MainGameStartTest();
+            }
+        }
+
         void LoadMainMenu()
         {
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
-        }
 
-        void LoadMainGame()
-        {
-            SceneManager.LoadScene("SnakeTestScene", LoadSceneMode.Single);
-            SceneManager.LoadScene("GameGui", LoadSceneMode.Additive);
         }
 
         void QuitGame()
@@ -61,9 +74,24 @@ namespace _Scripts.State
 
         void SubscribeGameStates()
         {
+            _actions.Add(
+                GameState.MainGame,
+                (
+                    () =>
+                    {
+                        SceneManager.LoadScene("MainGameScene", LoadSceneMode.Single);
+                    }
+                )
+            );
             _actions.Add(GameState.MainMenu, LoadMainMenu);
-            _actions.Add(GameState.MainGame, LoadMainGame);
             _actions.Add(GameState.Quitting, QuitGame);
+            _actions.Add(GameState.UnPause, () => MainGameManager.ResumeGameLogic());
+        }
+
+        public int Score
+        {
+            get { return MainGameManager.CurrentPoints; }
+            set { MainGameManager.CurrentPoints = value; }
         }
     }
 }

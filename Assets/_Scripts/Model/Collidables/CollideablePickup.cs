@@ -12,8 +12,6 @@ namespace _Scripts.Model.Collidables
             Debug.Log($"Vist attempt on {gameObject.name}");
             if (!(other?.TryGetComponent<IPickableVisitor>(out var visitor) ?? false))
             {
-                var components = other.GetComponents<Component>();
-                Debug.Log($"Components on {other.gameObject.name}: {string.Join(", ", components.Select(c => c.GetType().Name))}");
                 return;
             }
             
