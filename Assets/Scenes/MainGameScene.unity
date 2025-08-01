@@ -150,8 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDefinition: {fileID: 11400000, guid: c319d068c36bdbd10b8fde28b0a8c5c2, type: 2}
   levels:
-  - levelName: Test Level
-    terrainPrefab: {fileID: 4654822931744566554, guid: 7f3df6b43aea30ee1a6b3a02bff22010, type: 3}
+  - levelName: Level 1
+    terrainPrefab: {fileID: 6378044288443088689, guid: 132d4199c3f6d6a62be9f080e0e1686b, type: 3}
     playerStartPosition: {x: 0, y: 0, z: 0}
     potentialTrashItems:
     - {fileID: 11400000, guid: eb65c5a6669344110b0bb2abe78ed62a, type: 2}
@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 543056981}
   - component: {fileID: 543056980}
   - component: {fileID: 543056983}
+  - component: {fileID: 543056984}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -368,7 +369,7 @@ Transform:
   m_GameObject: {fileID: 543056979}
   serializedVersion: 2
   m_LocalRotation: {x: 0.4080524, y: -0, z: -0, w: 0.9129585}
-  m_LocalPosition: {x: 0, y: 30.9, z: -41.7}
+  m_LocalPosition: {x: 0, y: 34.52, z: -48.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -418,6 +419,18 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &543056984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543056979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9643b7663e75fda82af5262f95e04f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &922760319
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +877,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987820834}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
