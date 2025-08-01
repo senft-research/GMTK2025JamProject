@@ -4,46 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject.dir/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/TrashSpawner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/TrashSpawner.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/Canvas.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/Canvas/LevelCanvas.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/Canvas/LevelCanvas.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/Canvas/LevelObjectives.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/Canvas/LevelObjectives.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/Canvas/LevelText.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/Canvas/LevelText.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/LevelDefinition.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/LevelDefinition.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/TrashDefinition.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/TrashDefinition.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/State/Pausing.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/State/Pausing/GamePauseLogicManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/State/Pausing/GamePauseLogicManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/State/Pausing/IPausable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/State/Pausing/IPausable.cs.meta" afterDir="false" />
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Initial Logic Impl and working">
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/GameLogicTimer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostBodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostBodyPrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostPrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scriptable Objects/BaseSnakeDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scriptable Objects/BaseSnakeDef.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scriptable Objects/GhostDefinition.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scriptable Objects/GhostDefinition.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameGui.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameGui.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SnakeTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SnakeTestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/CollideablePickup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/CollideablePickup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/SpeedEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/SpeedEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/LevelDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/LevelDefinition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/TrashDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/TrashDefinition.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/Timer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/Timer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/GameLogicTimer.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +51,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -191,7 +168,7 @@
       <workItem from="1754060165679" duration="3291000" />
       <workItem from="1754068898939" duration="874000" />
       <workItem from="1754069980945" duration="2007000" />
-      <workItem from="1754072087951" duration="9615000" />
+      <workItem from="1754072087951" duration="15398000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -321,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754002628570</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Initial Logic Impl and working">
+      <option name="closed" value="true" />
+      <created>1754081914162</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1754081914162</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,6 +350,7 @@
     <MESSAGE value="Added Initial Sound logic for music (not going any further until separate branch)" />
     <MESSAGE value="Changes to scene also commited" />
     <MESSAGE value="The main logic is finally working properly for the movement in SnakeEntity.cs. (Thank you god!)" />
-    <option name="LAST_COMMIT_MESSAGE" value="The main logic is finally working properly for the movement in SnakeEntity.cs. (Thank you god!)" />
+    <MESSAGE value="Initial Logic Impl and working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Logic Impl and working" />
   </component>
 </project>

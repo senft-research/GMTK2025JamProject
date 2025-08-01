@@ -30,7 +30,6 @@ namespace _Scripts.State
             SubscribeGameStates();
             SceneManager.sceneLoaded += OnSceneLoaded;
             ChangeState(GameState.MainMenu);
-            
         }
 
         public void ChangeState(GameState newState)
@@ -85,6 +84,12 @@ namespace _Scripts.State
             _actions.Add(GameState.MainMenu, LoadMainMenu);
             _actions.Add(GameState.Quitting, QuitGame);
             _actions.Add(GameState.UnPause, () => MainGameManager.ResumeGameLogic());
+        }
+
+        public int Score
+        {
+            get { return MainGameManager.CurrentPoints; }
+            set { MainGameManager.CurrentPoints = value; }
         }
     }
 }

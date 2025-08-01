@@ -13,12 +13,16 @@ namespace _Scripts.Model.Level
         public GameObject terrainPrefab;
         public Vector3 playerStartPosition;
         public List<TrashDefinition> potentialTrashItems;
+        public int roundDuration;
+        public int trashSpawnInterval;
         int _trashTypesAmount;
+
         int TrashTypesAmount()
         {
             if (_trashTypesAmount == 0)
             {
                 _trashTypesAmount = potentialTrashItems.Count;
+                Debug.Log($"Potential Trash Type Amount: {_trashTypesAmount}");
             }
             return _trashTypesAmount;
 
@@ -26,7 +30,7 @@ namespace _Scripts.Model.Level
 
         public TrashDefinition GetRandomTrash()
         {
-            return potentialTrashItems[Random.Range(0, TrashTypesAmount() - 1)];
+            return potentialTrashItems[Random.Range(0, TrashTypesAmount())];
         }
     }
 

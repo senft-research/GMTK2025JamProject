@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Scripts.Util.Pools.Audio;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Scriptables
 {   
@@ -13,7 +14,9 @@ namespace _Scripts.Scriptables
     {
         public GameObject trashPrefab;
         public List<ScriptableObject> trashEffects;
-        public int points;
+        
+        [FormerlySerializedAs("points")]
+        public int pointsValue;
         public SoundData pickupAudioData;
     }
 }

@@ -6,6 +6,8 @@ using _Scripts.Model.Entities;
 using _Scripts.Model.Entities.Snake;
 using _Scripts.Model.Level;
 using _Scripts.State.Pausing;
+using _Scripts.UI;
+using _Scripts.Util;
 using KBCore.Refs;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,12 +16,18 @@ namespace _Scripts.State
 {
     public class MainGameManager : ValidatedMonoBehaviour
     {
-        
+        #region Timer Logic
+
+        GameLogicTimer roundTimer;
+        GameLogicTimer trashSpawnTimer;
+
+        #endregion
+
         SnakeEntity _playerEntity;
 
         [SerializeField]
         EntityDefinition playerDefinition;
-        
+
         [SerializeField]
         List<LevelDefinition> levels;
 
@@ -27,19 +35,44 @@ namespace _Scripts.State
 
         [SerializeField, Child]
         Canvas _canvas;
-        
+
         int currentLevel = 0;
+
+        int currentScore = 0;
+
         public void OnEnable()
         {
             GameManger.Instance.MainGameManager = this;
-            
         }
 
-        void UpdateLoop()
+        void Update()
         {
-            
+            if (GamePauseLogicManager.Instance.IsPaused)
+                return;
+
+            CheckTimersRunning();
+            UpdateTimers();
         }
-        
+
+        void CheckTimersRunning()
+        {
+            if (!trashSpawnTimer.IsRunning)
+            {
+                trashSpawnTimer.Start();
+            }
+
+            if (!roundTimer.IsRunning)
+            {
+                trashSpawnTimer.Start();
+            }
+        }
+
+        void UpdateTimers()
+        {
+            roundTimer.Update(Time.deltaTime);
+            trashSpawnTimer.Update(Time.deltaTime);
+        }
+
         public void StartNewGame()
         {
             ChangeLevel(currentLevel);
@@ -55,9 +88,26 @@ namespace _Scripts.State
             PauseGameLogic();
             ShowGameStartUI();
         }
-        
-        public void EndRound() { }
 
+        public void EndRound()
+        {
+            EndRound(true);
+        }
+
+        public void EndRound(bool timeOver)
+        {
+            if (!timeOver)
+            {
+                RoundFailureLogic();
+            }
+            StartNewRound();
+        }
+
+        void RoundFailureLogic()
+        {
+            //TODO Remove this before we public
+            Debug.Log("You lose this round asshole!");
+        }
         void PauseGameLogic()
         {
             GamePauseLogicManager.Instance.PauseGame(false);
@@ -72,6 +122,7 @@ namespace _Scripts.State
             }
             GamePauseLogicManager.Instance.ResumeGame(isPauseMenu);
         }
+
         public void EndGame(bool playerWon) { }
 
         GameObject activeTerrain;
@@ -84,15 +135,32 @@ namespace _Scripts.State
                 return;
             }
 
-            activeTerrain = Instantiate(_currentLevelDefinition.terrainPrefab);
-            Vector3 minRange = new Vector3(-45f, 0f, -26f);
-            Vector3 maxRange = new Vector3(45f, 0f, 26f);
+            activeTerrain = Instantiate(
+                _currentLevelDefinition.terrainPrefab,
+                new Vector3(0, -2, 0),
+                Quaternion.identity
+            );
+        }
 
-            for (int i = 0; i < 6; i++)
+        void SetTimers()
+        {
+            roundTimer = new GameLogicTimer(_currentLevelDefinition.roundDuration);
+            trashSpawnTimer = new GameLogicTimer(_currentLevelDefinition.trashSpawnInterval);
+            roundTimer.OnTimerFinished += EndRound;
+            roundTimer.OnTimeChanged += timeRemaining =>
             {
-                Debug.Log("Spawning Trash!");
-                SpawnRandomTrash(GetRandomSpawnPosition(minRange,maxRange));
-            }
+                UiManager.Instance.ChangeBarPercent(
+                    UiElementType.Timer,
+                    timeRemaining / roundTimer.Duration
+                );
+            };
+
+            trashSpawnTimer.OnTimerFinished += () =>
+            {
+                Vector3 minRange = new Vector3(-41f, 0f, -21f);
+                Vector3 maxRange = new Vector3(41f, 0f, 21f);
+                SpawnRandomTrash(GetRandomSpawnPosition(minRange, maxRange));
+            };
         }
 
         void UnloadTerrain()
@@ -109,8 +177,12 @@ namespace _Scripts.State
                 transform,
                 Quaternion.identity
             );
-            
+
             _playerEntity.TrackingModule.StartTracking();
+            _playerEntity.OnCollision += other =>
+            {
+                EndRound(false);
+            };
         }
 
         void DespawnPlayer()
@@ -122,6 +194,7 @@ namespace _Scripts.State
         {
             _canvas.gameObject.SetActive(true);
         }
+
         public void ShowGameOverScreen() { }
 
         public void ResetGame() { }
@@ -138,7 +211,7 @@ namespace _Scripts.State
 
             currentLevel = levelNumber;
             _currentLevelDefinition = levels[levelNumber];
-            
+            SetTimers();
             UnloadTerrain();
             LoadTerrain();
         }
@@ -149,9 +222,12 @@ namespace _Scripts.State
             {
                 throw new InvalidOperationException($"The current level definition is not set!");
             }
-            TrashItem trash = TrashSpawner.CreateTrash<TrashItem>(_currentLevelDefinition.GetRandomTrash(),
+            TrashItem trash = TrashSpawner.CreateTrash<TrashItem>(
+                _currentLevelDefinition.GetRandomTrash(),
                 spawnPosition,
-                gameObject.transform, Quaternion.identity);
+                gameObject.transform,
+                Quaternion.identity
+            );
         }
 
         Vector3 GetRandomSpawnPosition(Vector3 minRange, Vector3 maxRange)
@@ -163,5 +239,10 @@ namespace _Scripts.State
             );
         }
 
+        public int CurrentPoints
+        {
+            get { return currentScore; }
+            set { currentScore += value; }
+        }
     }
 }

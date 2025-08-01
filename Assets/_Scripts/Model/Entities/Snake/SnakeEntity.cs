@@ -44,6 +44,9 @@ namespace _Scripts.Model.Entities.Snake
         public SnakeBody bodyPrefab;
         List<SnakeBody> BodyParts = new();
         bool _bodySpawnedThisFrame = false;
+        
+        public event Action<Collider> OnCollision; 
+
         #endregion
 
         #region Module Properties
@@ -189,7 +192,7 @@ namespace _Scripts.Model.Entities.Snake
                     body.isSpawning = false;
                     return;
                 }
-                Debug.Log("ROUND OVER! HIT AN OBJECT!");
+                OnCollision.Invoke(other);
                 //TODO need level reset logic here
                 return;
             }

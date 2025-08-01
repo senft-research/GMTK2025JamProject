@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using _Scripts.Model.Entities.Snake;
 using _Scripts.Scriptables;
+using _Scripts.State;
+using _Scripts.UI;
 using _Scripts.Util.Pools;
 using _Scripts.Util.Pools.Audio;
-using KBCore.Refs;
 using UnityEngine;
 
 namespace _Scripts.Model.Collidables.Trash
@@ -16,6 +17,7 @@ namespace _Scripts.Model.Collidables.Trash
         List<ScriptableObject> trashEffectsScriptables;
 
         List<ITrashEffect> _trashEffects = new();
+        int _pointsValue;
         public List<ITrashEffect> Effects() => _trashEffects;
  
         protected override void OnCollide(Collider? other = null)
@@ -27,6 +29,8 @@ namespace _Scripts.Model.Collidables.Trash
         void PickupTrash()
         {
             SoundManager.Instance.CreateSoundBuilder().WithPosition(gameObject.transform.position).Play(soundData);
+            GameManger.Instance.Score = _pointsValue;
+            UiManager.Instance.ChangeText(UiElementType.Score, GameManger.Instance.Score.ToString());
             ObjectPoolManager.Instance.ReturnObjectToPool(this);
         }
 
@@ -43,6 +47,7 @@ namespace _Scripts.Model.Collidables.Trash
                     _trashEffects.Add(effect);
                 }
             }
+            _pointsValue = definition.pointsValue;
         }
 
 
