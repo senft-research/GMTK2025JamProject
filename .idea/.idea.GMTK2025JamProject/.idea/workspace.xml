@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Initial Logic Impl and working">
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/GameLogicTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostBodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostBodyPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/LevelDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Level/LevelDefinition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/TrashDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/TrashDefinition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/Timer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/Timer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/GameLogicTimer.cs.meta" afterDir="false" />
-    </list>
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Initial Logic Impl and working" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +66,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature-level__logic__new",
+    "git-widget-placeholder": "#9 on feature-level__logic__new",
     "last_opened_file_path": "/home/jordan/GMTK2025JamProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
