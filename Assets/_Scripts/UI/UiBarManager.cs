@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,7 +43,7 @@ namespace _Scripts.UI
             }
             catch (System.InvalidCastException)
             {
-                Debug.LogError("UiBarManager: Given UiElementType is Not an instance of IUiBar!");
+                Debug.LogError(String.Format("UiBarManager: Given UiElementType ({0}) is Not an instance of IUiBar",barType.ToString()));
             }
         }
 
@@ -54,7 +55,7 @@ namespace _Scripts.UI
             }
             catch (System.InvalidCastException)
             {
-                Debug.LogError("UiBarManager: Given UiElementType is not an instance of IUIText!");
+                Debug.LogError(String.Format("UiBarManager: Given UiElementType ({0}) is Not an instance of IUiBar",type.ToString()));
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -8,21 +9,30 @@ namespace _Scripts.UI
     {
         public UiElementType textType;
 
+        public string defaultText;
+        
         protected TMP_Text _text;
+
+        public void Start()
+        {
+            _text = gameObject.GetComponent<TMP_Text>();
+            UiBarManager.Instance.RegisterElement(this);
+            ChangeText("0");
+        }
         
         public UiElementType GetElementType()
         {
-            throw new System.NotImplementedException();
+            return textType;
         }
         
         public void ChangeText(string text)
         {
-            
+            _text.text = String.Format(defaultText, text);
         }
 
-        public int GetIntegerText()
+        public string GetText()
         {
-            throw new System.NotImplementedException();
+            return _text.text;
         }
     }
 }

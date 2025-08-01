@@ -4,6 +4,6 @@ namespace _Scripts.UI
     {
         public void ChangeText(string text);
 
-        public int GetIntegerText();
+        public string GetText();
     }
 }
