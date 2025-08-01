@@ -53,6 +53,7 @@ namespace _Scripts.State
 
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
+
             if (scene.name == "MainGameScene")
             {
                 MainGameStartTest();
@@ -62,6 +63,7 @@ namespace _Scripts.State
         void LoadMainMenu()
         {
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+
         }
 
         void QuitGame()

@@ -788,6 +788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textType: 3
   defaultText: 'Score: {0}'
+
 --- !u!1 &1368071181
 GameObject:
   m_ObjectHideFlags: 0
