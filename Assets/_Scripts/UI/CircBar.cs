@@ -11,7 +11,7 @@ namespace _Scripts.UI
 
         void Start()
         {
-            UiBarManager.Instance.RegisterElement(this);
+            UiManager.Instance.RegisterElement(this);
             Circle = gameObject.GetComponent<Image>();
         }
 

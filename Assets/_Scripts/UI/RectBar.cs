@@ -12,7 +12,7 @@ namespace _Scripts.UI
 
         void Start()
         {
-            UiBarManager.Instance.RegisterElement(this);
+            UiManager.Instance.RegisterElement(this);
             MaxSize = gameObject.GetComponentInParent<RectTransform>().rect.width;
             RectTransform = gameObject.GetComponent<RectTransform>();
         }

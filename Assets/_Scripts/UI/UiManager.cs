@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace _Scripts.UI
 {
-    public class UiBarManager : MonoBehaviour
+    public class UiManager : MonoBehaviour
     {
-        public static UiBarManager Instance { get; private set; }
+        public static UiManager Instance { get; private set; }
 
         private Dictionary<UiElementType, IUiElement> _elements;
         

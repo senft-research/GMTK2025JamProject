@@ -16,7 +16,7 @@ namespace _Scripts.UI
         public void Start()
         {
             _text = gameObject.GetComponent<TMP_Text>();
-            UiBarManager.Instance.RegisterElement(this);
+            UiManager.Instance.RegisterElement(this);
             ChangeText("0");
         }
         
