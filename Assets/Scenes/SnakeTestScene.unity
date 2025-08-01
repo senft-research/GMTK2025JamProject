@@ -177,7 +177,8 @@ MonoBehaviour:
     ignoreListenerVolume: 0
     ignoreListenerPause: 0
     rolloffMode: 1
-  speedBoost: 1
+  trashEffects:
+  - {fileID: 11400000, guid: 59820e898914d9bbe9adbf6f6c1dc371, type: 2}
 --- !u!54 &501751683
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -548,7 +549,7 @@ MonoBehaviour:
     ignoreListenerVolume: 0
     ignoreListenerPause: 0
     rolloffMode: 1
-  speedBoost: 1
+  trashEffects: []
 --- !u!54 &1276950734
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1046,7 +1047,7 @@ MonoBehaviour:
     ignoreListenerVolume: 0
     ignoreListenerPause: 0
     rolloffMode: 1
-  speedBoost: 1
+  trashEffects: []
 --- !u!54 &2058527280
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -11,5 +11,6 @@ namespace _Scripts.Model.Entities
     {
         public GameObject entityPrefab;
         public string entityName;
+        public float BaseSpeed;
     }
 }
