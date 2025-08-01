@@ -49,7 +49,8 @@ namespace _Scripts.State
 
         void LoadMainGame()
         {
-            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("SnakeTestScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("GameGui", LoadSceneMode.Additive);
         }
 
         void QuitGame()
