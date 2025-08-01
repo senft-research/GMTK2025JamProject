@@ -4,106 +4,88 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/audio.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Audio/audio.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/GameResources.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/GameResources/gameResources.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/GameResources/gameResources.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/prefabs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/prefabs.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/Mobile_RPAsset.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/Mobile_RPAsset.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/Mobile_Renderer.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/Mobile_Renderer.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/GameState.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/GameState/GameState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/GameState/GameState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Util.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/AudioManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/ClusterInputManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/MemorySettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/MultiplayerManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/PresetManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/VersionControlSettings.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/XRSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Initial Logic Impl and working" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;senft-research&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/senft-research/GMTK2025JamProject.git&quot;,
+    &quot;accountId&quot;: &quot;e1e9873a-30e6-4613-a6fc-9050c58ad723&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/GamePauseLogicManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/IPausable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/SoundData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="30KGYUyLirTBxY37bwkIGCcq63p" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor & Play.executor": "Debug",
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "#9 on feature-level__logic__new",
     "last_opened_file_path": "/home/jordan/GMTK2025JamProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Desktop/GMTKGameJamTest.x86_64" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Desktop" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Unity/Hub/Editor/6000.0.51f1/Editor/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
@@ -156,7 +138,21 @@
       <option name="presentableId" value="Default" />
       <updated>1753368898508</updated>
       <workItem from="1753368899978" duration="326000" />
-      <workItem from="1753369232293" duration="308000" />
+      <workItem from="1753369232293" duration="486000" />
+      <workItem from="1753375288164" duration="263000" />
+      <workItem from="1753375565499" duration="23000" />
+      <workItem from="1753556002925" duration="5007000" />
+      <workItem from="1753565117648" duration="44000" />
+      <workItem from="1753609740874" duration="211000" />
+      <workItem from="1753823807218" duration="1036000" />
+      <workItem from="1753824918798" duration="7260000" />
+      <workItem from="1753838493714" duration="4000" />
+      <workItem from="1753971393186" duration="30403000" />
+      <workItem from="1754054681817" duration="5474000" />
+      <workItem from="1754060165679" duration="3291000" />
+      <workItem from="1754068898939" duration="874000" />
+      <workItem from="1754069980945" duration="2007000" />
+      <workItem from="1754072087951" duration="15398000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -174,7 +170,127 @@
       <option name="project" value="LOCAL" />
       <updated>1753369091711</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1753369656895</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753369656895</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Scene Templates Settings upload">
+      <option name="closed" value="true" />
+      <created>1753369680913</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1753369680913</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Addition of GameState.cs">
+      <option name="closed" value="true" />
+      <created>1753375535306</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1753375535306</updated>
+    </task>
+    <task id="LOCAL-00006" summary="workspace.xml">
+      <option name="closed" value="true" />
+      <created>1753375582862</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1753375582862</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Continuing setup of base.">
+      <option name="closed" value="true" />
+      <created>1753565148803</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1753565148803</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Resharpier Reformats">
+      <option name="closed" value="true" />
+      <created>1753824262657</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1753824262657</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Initial pool logic">
+      <option name="closed" value="true" />
+      <created>1753837036146</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1753837036146</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Forgot Sample Scene">
+      <option name="closed" value="true" />
+      <created>1753837056913</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1753837056913</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Refactoring some files">
+      <option name="closed" value="true" />
+      <created>1753894536551</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1753894536551</updated>
+    </task>
+    <task id="LOCAL-00012" summary="- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tomorrow.&#10;- Focus on next commit should be on Grid.cs &amp; ITrackable.cs (God help my soul)!">
+      <option name="closed" value="true" />
+      <created>1753911544391</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1753911544391</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)">
+      <option name="closed" value="true" />
+      <created>1753989298518</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1753989298518</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added Initial Sound logic for music (not going any further until separate branch)">
+      <option name="closed" value="true" />
+      <created>1753991551499</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1753991551499</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Changes to scene also commited">
+      <option name="closed" value="true" />
+      <created>1753991566150</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1753991566150</updated>
+    </task>
+    <task id="LOCAL-00016" summary="The main logic is finally working properly for the movement in SnakeEntity.cs. (Thank you god!)">
+      <option name="closed" value="true" />
+      <created>1754002628570</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1754002628570</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Initial Logic Impl and working">
+      <option name="closed" value="true" />
+      <created>1754081914162</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1754081914162</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +320,21 @@
     <MESSAGE value="GitIgnore Added" />
     <MESSAGE value="Second git ignore attempt" />
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Scene Templates Settings upload" />
+    <MESSAGE value="Addition of GameState.cs" />
+    <MESSAGE value="workspace.xml" />
+    <MESSAGE value="Continuing setup of base." />
+    <MESSAGE value="Resharpier Reformats" />
+    <MESSAGE value="Initial pool logic" />
+    <MESSAGE value="Forgot Sample Scene" />
+    <MESSAGE value="Refactoring some files" />
+    <MESSAGE value="- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tommorow." />
+    <MESSAGE value="- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tomorrow.&#10;- Focus on next commit should be on Grid.cs &amp; ITrackable.cs (God help my soul)!" />
+    <MESSAGE value="Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)" />
+    <MESSAGE value="Added Initial Sound logic for music (not going any further until separate branch)" />
+    <MESSAGE value="Changes to scene also commited" />
+    <MESSAGE value="The main logic is finally working properly for the movement in SnakeEntity.cs. (Thank you god!)" />
+    <MESSAGE value="Initial Logic Impl and working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Logic Impl and working" />
   </component>
 </project>

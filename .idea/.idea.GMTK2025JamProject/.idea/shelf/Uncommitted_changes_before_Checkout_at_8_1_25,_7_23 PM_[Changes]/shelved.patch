@@ -1,0 +1,309 @@
+Index: Assets/_Scripts/Model/Collidables/CollideablePickup.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System.Linq;\nusing _Scripts.Model.Pickables;\nusing UnityEngine;\n\nnamespace _Scripts.Model.Collidables\n{\n    public abstract class CollideablePickup : Collideable, IPickable\n    {\n        \n        protected override void OnCollide(Collider? other = null)\n        {\n            Debug.Log($\"Vist attempt on {gameObject.name}\");\n            if (!(other?.TryGetComponent<IPickableVisitor>(out var visitor) ?? false))\n            {\n                var components = other.GetComponents<Component>();\n                Debug.Log($\"Components on {other.gameObject.name}: {string.Join(\", \", components.Select(c => c.GetType().Name))}\");\n                return;\n            }\n            \n            Debug.Log($\"Accepted the visitor!\");\n            Accept(visitor);\n        }\n \n        public void Accept(IPickableVisitor visitor)\n        {\n            visitor.Visit(this);\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Assets/_Scripts/Model/Collidables/CollideablePickup.cs b/Assets/_Scripts/Model/Collidables/CollideablePickup.cs
+--- a/Assets/_Scripts/Model/Collidables/CollideablePickup.cs	(revision aa4d0e836e612299dcb9e0f1b74bada8a43b62f2)
++++ b/Assets/_Scripts/Model/Collidables/CollideablePickup.cs	(date 1754072484986)
+@@ -12,8 +12,6 @@
+             Debug.Log($"Vist attempt on {gameObject.name}");
+             if (!(other?.TryGetComponent<IPickableVisitor>(out var visitor) ?? false))
+             {
+-                var components = other.GetComponents<Component>();
+-                Debug.Log($"Components on {other.gameObject.name}: {string.Join(", ", components.Select(c => c.GetType().Name))}");
+                 return;
+             }
+             
+Index: Assets/_Scripts/State/GameManager.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System;\nusing System.Collections.Generic;\nusing UnityEngine;\nusing UnityEngine.SceneManagement;\n\nnamespace _Scripts.State\n{\n    public class GameManger : MonoBehaviour\n    {\n        public static GameManger Instance { get; private set; }\n\n        readonly Dictionary<GameState, Action> _actions = new();\n\n        public GameState gameState;\n\n        void Awake()\n        {\n            if (Instance != null && Instance != this)\n            {\n                Destroy(gameObject);\n            }\n            else\n            {\n                Instance = this;\n                DontDestroyOnLoad(gameObject);\n            }\n\n            SubscribeGameStates();\n            ChangeState(GameState.MainMenu);\n        }\n\n        public void ChangeState(GameState newState)\n        {\n            if (_actions.TryGetValue(newState, out var action))\n            {\n                gameState = newState;\n                action?.Invoke();\n            }\n            else\n            {\n                Debug.LogWarning($\"No action defined for the state: {gameState}\");\n            }\n        }\n\n        void LoadMainMenu()\n        {\n            SceneManager.LoadScene(\"MainMenu\", LoadSceneMode.Additive);\n        }\n\n        void QuitGame()\n        {\n            Debug.Log(\"Quitting Game!\");\n            Application.Quit();\n        }\n\n        void SubscribeGameStates()\n        {\n            _actions.Add(GameState.MainMenu, LoadMainMenu);\n            _actions.Add(GameState.Quitting, QuitGame);\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Assets/_Scripts/State/GameManager.cs b/Assets/_Scripts/State/GameManager.cs
+--- a/Assets/_Scripts/State/GameManager.cs	(revision aa4d0e836e612299dcb9e0f1b74bada8a43b62f2)
++++ b/Assets/_Scripts/State/GameManager.cs	(date 1754072572433)
+@@ -13,6 +13,8 @@
+ 
+         public GameState gameState;
+ 
++        public MainGameManager MainGameManager { private get; set; }
++
+         void Awake()
+         {
+             if (Instance != null && Instance != this)
+@@ -26,7 +28,9 @@
+             }
+ 
+             SubscribeGameStates();
++            SceneManager.sceneLoaded += OnSceneLoaded;
+             ChangeState(GameState.MainMenu);
++            
+         }
+ 
+         public void ChangeState(GameState newState)
+@@ -42,6 +46,19 @@
+             }
+         }
+ 
++        void MainGameStartTest()
++        {
++            MainGameManager.StartNewGame();
++        }
++
++        void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
++        {
++            if (scene.name == "MainGameScene")
++            {
++                MainGameStartTest();
++            }
++        }
++
+         void LoadMainMenu()
+         {
+             SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+@@ -55,6 +72,15 @@
+ 
+         void SubscribeGameStates()
+         {
++            _actions.Add(
++                GameState.MainGame,
++                (
++                    () =>
++                    {
++                        SceneManager.LoadScene("MainGameScene", LoadSceneMode.Single);
++                    }
++                )
++            );
+             _actions.Add(GameState.MainMenu, LoadMainMenu);
+             _actions.Add(GameState.Quitting, QuitGame);
+         }
+Index: Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System;\nusing System.Collections.Generic;\nusing _Scripts.Model.Entities.Snake;\nusing _Scripts.Scriptables;\nusing _Scripts.Util.Pools.Audio;\nusing KBCore.Refs;\nusing UnityEngine;\n\nnamespace _Scripts.Model.Collidables.Trash\n{\n    public class TrashItem : CollideablePickup\n    {\n        [SerializeField]\n        SoundData soundData;\n\n        [SerializeField]\n        List<ScriptableObject> trashEffects;\n\n        List<ITrashEffect> _trashEffects = new();\n\n        void Start()\n        {\n            foreach (var scriptableObject in trashEffects)\n            {\n                if (scriptableObject is ITrashEffect effect)\n                {\n                    _trashEffects.Add(effect);\n                }\n            }\n        }\n\n        public List<ITrashEffect> Effects() => _trashEffects;\n        public void PrintTest()\n        {\n            Debug.Log($\"Hello, you visited {gameObject.name}!\");\n        } \n        \n        protected override void OnCollide(Collider? other = null)\n        {\n            base.OnCollide(other);\n            PickupTrash();\n        }\n\n        void PickupTrash()\n        {\n            SoundManager.Instance.CreateSoundBuilder().WithPosition(gameObject.transform.position).Play(soundData);\n            Destroy(gameObject);\n        }\n        \n        \n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs b/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs
+--- a/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs	(revision aa4d0e836e612299dcb9e0f1b74bada8a43b62f2)
++++ b/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs	(date 1754072484990)
+@@ -30,11 +30,7 @@
+         }
+ 
+         public List<ITrashEffect> Effects() => _trashEffects;
+-        public void PrintTest()
+-        {
+-            Debug.Log($"Hello, you visited {gameObject.name}!");
+-        } 
+-        
++ 
+         protected override void OnCollide(Collider? other = null)
+         {
+             base.OnCollide(other);
+Index: Assets/_Scripts/Util/Pools/ObjectPoolManager.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing KBCore.Refs;\nusing UnityEngine;\n\nnamespace _Scripts.Util.Pools\n{\n    public class ObjectPoolManager : MonoBehaviour\n    {\n        public static ObjectPoolManager Instance { get; private set; }\n\n        readonly Dictionary<string, PooledObjectInfo> _objectPools = new();\n\n        void Awake()\n        {\n            if (Instance != null && Instance != this)\n            {\n                Destroy(gameObject);\n            }\n            else\n            {\n                Instance = this;\n                DontDestroyOnLoad(gameObject);\n            }\n        }\n\n        public GameObject SpawnObject(\n            IPoolable poolableToSpawn,\n            Vector3 spawnPosition,\n            Quaternion spawnRotation\n        )\n        {\n            GameObject objectToSpawn = poolableToSpawn.PoolableObject();\n            PooledObjectInfo pool;\n            if (_objectPools.TryGetValue(objectToSpawn.name, out var objectPool))\n            {\n                pool = objectPool;\n            }\n            else\n            {\n                pool = new PooledObjectInfo()\n                {\n                    LookupString = objectToSpawn.name,\n                    PoolContainer = new GameObject(objectToSpawn.name),\n                };\n                pool.PoolContainer.transform.SetParent(gameObject.transform);\n                _objectPools.Add(pool.LookupString, pool);\n            }\n\n            GameObject? spawnableObject = pool.InactiveObjects.FirstOrDefault();\n            if (spawnableObject == null)\n            {\n                spawnableObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);\n            }\n            else\n            {\n                spawnableObject.transform.position = spawnPosition;\n                spawnableObject.transform.rotation = spawnRotation;\n                pool.InactiveObjects.Remove(spawnableObject);\n            }\n            spawnableObject.SetActive(true);\n            spawnableObject.GetComponent<IPoolable>().InitReturnLogic();\n            return spawnableObject;\n        }\n\n        public void ReturnObjectToPool(IPoolable poolableToReturn)\n        {\n            GameObject objectToReturn = poolableToReturn.PoolableObject();\n\n            string objectName = objectToReturn.name.Substring(0, objectToReturn.name.Length - 7);\n\n            if (!_objectPools.TryGetValue(objectName, out var pool))\n            {\n                throw new ArgumentException(\n                    $\"Object with name {objectToReturn.name} does not have a pool to release to!\"\n                );\n            }\n\n            objectToReturn.SetActive(false);\n            pool.InactiveObjects.Add(objectToReturn);\n            objectToReturn.transform.SetParent(pool.PoolContainer.transform);\n        }\n    }\n\n    public class PooledObjectInfo\n    {\n        public string LookupString;\n        public List<GameObject> InactiveObjects = new();\n        public GameObject PoolContainer;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs b/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs
+--- a/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs	(revision aa4d0e836e612299dcb9e0f1b74bada8a43b62f2)
++++ b/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs	(date 1754072484975)
+@@ -23,6 +23,7 @@
+                 Instance = this;
+                 DontDestroyOnLoad(gameObject);
+             }
++            
+         }
+ 
+         public GameObject SpawnObject(
+Index: .idea/.idea.GMTK2025JamProject/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"0759b8b0-cccf-45e4-bf89-dab9bde9925b\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/ITrashEffect.cs\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/ITrashEffect.cs.meta\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Scriptables/SpeedEffect.cs\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Scriptables/SpeedEffect.cs.meta\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Entities/EntityDefinition.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Scriptables/EntityDefinition.cs\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Entities/EntityDefinition.cs.meta\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Scriptables/EntityDefinition.cs.meta\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"DpaMonitoringSettings\">\n    <option name=\"firstShow\" value=\"false\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;senft-research&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/senft-research/GMTK2025JamProject.git&quot;,\n    &quot;accountId&quot;: &quot;e1e9873a-30e6-4613-a6fc-9050c58ad723&quot;\n  }\n}</component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs\" root0=\"SKIP_HIGHLIGHTING\" />\n    <setting file=\"mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/SnakeTestScene.unity\" root0=\"SKIP_HIGHLIGHTING\" />\n    <setting file=\"mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/SnakeTestScene.unity\" root0=\"SKIP_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Collidables/Collideable.cs\" root0=\"SKIP_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/SoundData.cs\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Shaders/Lit.shader\" root0=\"SKIP_HIGHLIGHTING\" />\n    <setting file=\"mock:///home/jordan/GMTK2025JamProject/ProjectSettings/EditorBuildSettings.asset\" root0=\"SKIP_HIGHLIGHTING\" />\n  </component>\n  <component name=\"MetaFilesCheckinStateConfiguration\" checkMetaFiles=\"true\" />\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 6\n}</component>\n  <component name=\"ProjectId\" id=\"30KGYUyLirTBxY37bwkIGCcq63p\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Attach to Unity Editor.Attach to Unity Editor &amp; Play.executor&quot;: &quot;Debug&quot;,\n    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;feature-core__logic&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/jordan/GMTK2025JamProject&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\" selected=\"Attach to Unity Editor.Attach to Unity Editor\">\n    <configuration name=\"Standalone Player\" type=\"RunUnityExe\" factoryName=\"Unity Executable\">\n      <option name=\"EXE_PATH\" value=\"$PROJECT_DIR$/../Desktop/GMTKGameJamTest.x86_64\" />\n      <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/../Desktop\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"Start Unity\" type=\"RunUnityExe\" factoryName=\"Unity Executable\">\n      <option name=\"EXE_PATH\" value=\"$PROJECT_DIR$/../Unity/Hub/Editor/6000.0.51f1/Editor/Unity\" />\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-projectPath $PROJECT_DIR$ -debugCodeOptimization\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"Unit Tests (batch mode)\" type=\"RunUnityExe\" factoryName=\"Unity Executable\">\n      <option name=\"EXE_PATH\" value=\"$PROJECT_DIR$/../Unity/Hub/Editor/6000.0.51f1/Editor/Unity\" />\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"1\" />\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"Attach to Unity Editor &amp; Play\" type=\"UNITY_DEBUG_RUN_CONFIGURATION\" factoryName=\"UNITY_ATTACH_AND_PLAY\" show_console_on_std_err=\"false\" show_console_on_std_out=\"false\" port=\"50000\" address=\"localhost\" ignored-value-for-modified-check=\"9961\">\n      <option name=\"allowRunningInParallel\" value=\"false\" />\n      <option name=\"listenPortForConnections\" value=\"false\" />\n      <option name=\"pid\" value=\"9961\" />\n      <option name=\"projectPathOnTarget\" />\n      <option name=\"runtimes\">\n        <list>\n          <MonoRuntime />\n        </list>\n      </option>\n      <option name=\"selectedOptions\">\n        <list />\n      </option>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"Attach to Unity Editor\" type=\"UNITY_DEBUG_RUN_CONFIGURATION\" factoryName=\"Unity Debug\" show_console_on_std_err=\"false\" show_console_on_std_out=\"false\" port=\"50000\" address=\"localhost\" ignored-value-for-modified-check=\"9961\">\n      <option name=\"allowRunningInParallel\" value=\"false\" />\n      <option name=\"listenPortForConnections\" value=\"false\" />\n      <option name=\"pid\" value=\"9961\" />\n      <option name=\"projectPathOnTarget\" />\n      <option name=\"runtimes\">\n        <list>\n          <MonoRuntime />\n        </list>\n      </option>\n      <option name=\"selectedOptions\">\n        <list />\n      </option>\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"0759b8b0-cccf-45e4-bf89-dab9bde9925b\" name=\"Changes\" comment=\"\" />\n      <created>1753368898508</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1753368898508</updated>\n      <workItem from=\"1753368899978\" duration=\"326000\" />\n      <workItem from=\"1753369232293\" duration=\"486000\" />\n      <workItem from=\"1753375288164\" duration=\"263000\" />\n      <workItem from=\"1753375565499\" duration=\"23000\" />\n      <workItem from=\"1753556002925\" duration=\"5007000\" />\n      <workItem from=\"1753565117648\" duration=\"44000\" />\n      <workItem from=\"1753609740874\" duration=\"211000\" />\n      <workItem from=\"1753823807218\" duration=\"1036000\" />\n      <workItem from=\"1753824918798\" duration=\"7260000\" />\n      <workItem from=\"1753838493714\" duration=\"4000\" />\n      <workItem from=\"1753971393186\" duration=\"30403000\" />\n      <workItem from=\"1754054681817\" duration=\"5474000\" />\n      <workItem from=\"1754060165679\" duration=\"3291000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"GitIgnore Added\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753369078053</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753369078053</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Second git ignore attempt\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753369091711</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753369091711</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Initial Commit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753369656895</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753369656895</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Scene Templates Settings upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753369680913</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753369680913</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Addition of GameState.cs\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753375535306</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753375535306</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"workspace.xml\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753375582862</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753375582862</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Continuing setup of base.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753565148803</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753565148803</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Resharpier Reformats\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753824262657</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753824262657</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"Initial pool logic\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753837036146</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753837036146</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"Forgot Sample Scene\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753837056913</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753837056913</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"Refactoring some files\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753894536551</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753894536551</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tomorrow.&#10;- Focus on next commit should be on Grid.cs &amp; ITrackable.cs (God help my soul)!\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753911544391</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753911544391</updated>\n    </task>\n    <task id=\"LOCAL-00013\" summary=\"Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753989298518</created>\n      <option name=\"number\" value=\"00013\" />\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753989298518</updated>\n    </task>\n    <task id=\"LOCAL-00014\" summary=\"Added Initial Sound logic for music (not going any further until separate branch)\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753991551499</created>\n      <option name=\"number\" value=\"00014\" />\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753991551499</updated>\n    </task>\n    <task id=\"LOCAL-00015\" summary=\"Changes to scene also commited\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1753991566150</created>\n      <option name=\"number\" value=\"00015\" />\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1753991566150</updated>\n    </task>\n    <task id=\"LOCAL-00016\" summary=\"The main logic is finally working properly for the movement in SnakeEntity.cs. (Thank you god!)\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1754002628570</created>\n      <option name=\"number\" value=\"00016\" />\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1754002628570</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"17\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"UnityCheckinConfiguration\" checkUnsavedScenes=\"true\" />\n  <component name=\"UnityProjectConfiguration\" hasMinimizedUI=\"true\" />\n  <component name=\"UnityProjectDiscoverer\">\n    <option name=\"hasUnityReference\" value=\"true\" />\n    <option name=\"unityProject\" value=\"true\" />\n    <option name=\"unityProjectFolder\" value=\"true\" />\n  </component>\n  <component name=\"UnityUnitTestConfiguration\" currentTestLauncher=\"Both\" />\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"CLEAR_INITIAL_COMMIT_MESSAGE\" value=\"true\" />\n    <MESSAGE value=\"GitIgnore Added\" />\n    <MESSAGE value=\"Second git ignore attempt\" />\n    <MESSAGE value=\"Initial Commit\" />\n    <MESSAGE value=\"Scene Templates Settings upload\" />\n    <MESSAGE value=\"Addition of GameState.cs\" />\n    <MESSAGE value=\"workspace.xml\" />\n    <MESSAGE value=\"Continuing setup of base.\" />\n    <MESSAGE value=\"Resharpier Reformats\" />\n    <MESSAGE value=\"Initial pool logic\" />\n    <MESSAGE value=\"Forgot Sample Scene\" />\n    <MESSAGE value=\"Refactoring some files\" />\n    <MESSAGE value=\"- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tommorow.\" />\n    <MESSAGE value=\"- Initial logic for GameEntity.cs and the TODOs for most of the core logic that needs to be done tomorrow.&#10;- Focus on next commit should be on Grid.cs &amp; ITrackable.cs (God help my soul)!\" />\n    <MESSAGE value=\"Core logic for the snake and body / collidables completed. Next need to consider QoL, cleaning up and event system (maybe in a different branch?)\" />\n    <MESSAGE value=\"Added Initial Sound logic for music (not going any further until separate branch)\" />\n    <MESSAGE value=\"Changes to scene also commited\" />\n    <MESSAGE value=\"The main logic is finally working properly for the movement in SnakeEntity.cs. (Thank you god!)\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"The main logic is finally working properly for the movement in SnakeEntity.cs. (Thank you god!)\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml b/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml
+--- a/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml	(revision aa4d0e836e612299dcb9e0f1b74bada8a43b62f2)
++++ b/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml	(date 1754072485609)
+@@ -5,16 +5,15 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/ITrashEffect.cs" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/ITrashEffect.cs.meta" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/SpeedEffect.cs" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/SpeedEffect.cs.meta" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject.dir/.idea/indexLayout.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/CollideablePickup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/CollideablePickup.cs" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/EntityDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/EntityDefinition.cs" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/EntityDefinition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Scriptables/EntityDefinition.cs.meta" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -27,7 +26,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="dev" />
++        <entry key="$PROJECT_DIR$" value="feature-level_logic" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -46,17 +45,19 @@
+ }</component>
+   <component name="HighlightingSettingsPerFile">
+     <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
+-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/SnakeTestScene.unity" root0="SKIP_HIGHLIGHTING" />
+-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/SnakeTestScene.unity" root0="SKIP_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
++    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/TextMesh Pro/Resources/TMP Settings.asset" root0="SKIP_HIGHLIGHTING" />
++    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Assembly.asmdef" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
+-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="SKIP_HIGHLIGHTING" />
++    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Collidables/CollideablePickup.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
++    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/SoundData.cs" root0="FORCE_HIGHLIGHTING" />
++    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
+-    <setting file="mock:///home/jordan/GMTK2025JamProject/ProjectSettings/EditorBuildSettings.asset" root0="SKIP_HIGHLIGHTING" />
+   </component>
+   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+   <component name="ProjectColorInfo">{
+@@ -76,7 +77,7 @@
+     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;feature-core__logic&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+     &quot;last_opened_file_path&quot;: &quot;/home/jordan/GMTK2025JamProject&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+@@ -112,30 +113,26 @@
+       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+       <method v="2" />
+     </configuration>
+-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9961">
++    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+       <option name="allowRunningInParallel" value="false" />
+       <option name="listenPortForConnections" value="false" />
+-      <option name="pid" value="9961" />
++      <option name="pid" />
+       <option name="projectPathOnTarget" />
+       <option name="runtimes">
+-        <list>
+-          <MonoRuntime />
+-        </list>
++        <list />
+       </option>
+       <option name="selectedOptions">
+         <list />
+       </option>
+       <method v="2" />
+     </configuration>
+-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9961">
++    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+       <option name="allowRunningInParallel" value="false" />
+       <option name="listenPortForConnections" value="false" />
+-      <option name="pid" value="9961" />
++      <option name="pid" />
+       <option name="projectPathOnTarget" />
+       <option name="runtimes">
+-        <list>
+-          <MonoRuntime />
+-        </list>
++        <list />
+       </option>
+       <option name="selectedOptions">
+         <list />
+@@ -164,6 +161,9 @@
+       <workItem from="1753971393186" duration="30403000" />
+       <workItem from="1754054681817" duration="5474000" />
+       <workItem from="1754060165679" duration="3291000" />
++      <workItem from="1754068898939" duration="874000" />
++      <workItem from="1754069980945" duration="2007000" />
++      <workItem from="1754072087951" duration="373000" />
+     </task>
+     <task id="LOCAL-00001" summary="GitIgnore Added">
+       <option name="closed" value="true" />
+Index: .idea/.idea.GMTK2025JamProject.dir/.idea/projectSettingsUpdater.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.GMTK2025JamProject.dir/.idea/projectSettingsUpdater.xml b/.idea/.idea.GMTK2025JamProject.dir/.idea/projectSettingsUpdater.xml
+new file mode 100644
+--- /dev/null	(date 1754072484999)
++++ b/.idea/.idea.GMTK2025JamProject.dir/.idea/projectSettingsUpdater.xml	(date 1754072484999)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RiderProjectSettingsUpdater">
++    <option name="singleClickDiffPreview" value="1" />
++    <option name="vcsConfiguration" value="3" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.idea.GMTK2025JamProject.dir/.idea/indexLayout.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.GMTK2025JamProject.dir/.idea/indexLayout.xml b/.idea/.idea.GMTK2025JamProject.dir/.idea/indexLayout.xml
+new file mode 100644
+--- /dev/null	(date 1754072485004)
++++ b/.idea/.idea.GMTK2025JamProject.dir/.idea/indexLayout.xml	(date 1754072485004)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="UserContentModel">
++    <attachedFolders />
++    <explicitIncludes />
++    <explicitExcludes />
++  </component>
++</project>
+\ No newline at end of file
+Index: ProjectSettings/EditorBuildSettings.asset
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>%YAML 1.1\n%TAG !u! tag:unity3d.com,2011:\n--- !u!1045 &1\nEditorBuildSettings:\n  m_ObjectHideFlags: 0\n  serializedVersion: 2\n  m_Scenes:\n  - enabled: 1\n    path: Assets/Scenes/SnakeTestScene.unity\n    guid: 55813d50084ca51918d72ee71bad3b2b\n  - enabled: 0\n    path: Assets/Scenes/SampleScene.unity\n    guid: 99c9720ab356a0642a771bea13969a05\n  - enabled: 0\n    path: Assets/Scenes/MainMenu.unity\n    guid: 0a251e00efc5b5b9aa00ba90ef3f2d9e\n  m_configObjects:\n    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}\n  m_UseUCBPForAssetBundles: 0\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProjectSettings/EditorBuildSettings.asset b/ProjectSettings/EditorBuildSettings.asset
+--- a/ProjectSettings/EditorBuildSettings.asset	(revision aa4d0e836e612299dcb9e0f1b74bada8a43b62f2)
++++ b/ProjectSettings/EditorBuildSettings.asset	(date 1754072484994)
+@@ -11,9 +11,12 @@
+   - enabled: 0
+     path: Assets/Scenes/SampleScene.unity
+     guid: 99c9720ab356a0642a771bea13969a05
+-  - enabled: 0
++  - enabled: 1
+     path: Assets/Scenes/MainMenu.unity
+     guid: 0a251e00efc5b5b9aa00ba90ef3f2d9e
++  - enabled: 1
++    path: Assets/Scenes/MainGameScene.unity
++    guid: 982b84abce8d181ed9b43dad710fe496
+   m_configObjects:
+     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+   m_UseUCBPForAssetBundles: 0
