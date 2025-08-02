@@ -23,12 +23,14 @@ namespace _Scripts.Model.Entities
             }
 
             var spawnRotation = rotation ?? Quaternion.identity;
+            Debug.Log($"Rotation is: {spawnRotation.ToString()}");
             GameObject entityObject = Instantiate(
                 definition.entityPrefab,
                 position,
                 spawnRotation,
                 parent
             );
+            entityObject.transform.SetPositionAndRotation(position, spawnRotation);
 
             if (!entityObject.TryGetComponent<T>(out var entity))
             {

@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using _Scripts.Model.Collidables;
 using _Scripts.Model.Collidables.Trash;
 using _Scripts.Model.Entities;
@@ -12,7 +14,9 @@ using _Scripts.UI;
 using _Scripts.Util;
 using KBCore.Refs;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 namespace _Scripts.State
 {
@@ -58,13 +62,14 @@ namespace _Scripts.State
 
         void Update()
         {
+            
             if (GamePauseLogicManager.Instance.IsPaused)
                 return;
-
+            if(currentLives == 0) ChangeLives(_maxLives);
             CheckTimersRunning();
             UpdateTimers();
         }
-
+        
         void CheckTimersRunning()
         {
             if (!_trashSpawnTimer.IsRunning)
@@ -74,7 +79,7 @@ namespace _Scripts.State
 
             if (!_roundTimer.IsRunning)
             {
-                _trashSpawnTimer.Start();
+                _roundTimer.Start();
             }
         }
 
@@ -86,21 +91,26 @@ namespace _Scripts.State
 
         public void StartNewGame()
         {
-            currentLives = _maxLives;
+            
             ChangeLevel(currentLevel);
-            SpawnPlayer();
+            SpawnEntites(false);
             PauseGameLogic();
             ShowGameStartUI();
         }
 
-        public void StartNewRound()
+        void StartNewRound()
         {
             DespawnPlayer();
             ChangeLevel(currentLevel);
+            SpawnEntites(true);
             PauseGameLogic();
-            SpawnPlayer();
-            SpawnGhosts();
             ShowGameStartUI();
+        }
+
+        void SpawnEntites(bool includeGhosts = false)
+        {
+            SpawnPlayer();
+            if(includeGhosts) SpawnGhosts();
         }
 
         public void StartNewLevel()
@@ -112,27 +122,32 @@ namespace _Scripts.State
             ShowGameStartUI();
         }
 
-        public void EndRound(string endRoundReason = "")
+        void EndRound(string endRoundReason = "")
         {
             EndRound(true, endRoundReason);
         }
 
-        public void EndRound(bool timeOver, string endRoundReason = "")
+        void EndRound(bool timeOver, string endRoundReason = "")
         {
             Debug.Log($"END OF ROUND!: REASON: {endRoundReason}");
-            if (!timeOver)
+            if (currentLives - 1 <= 0)
             {
                 RoundFailureLogic();
                 return;
             }
+            ChangeLives(-1);
             StartNewRound();
         }
 
+
+        void ChangeLives(int changeAmount)
+        {
+            currentLives += changeAmount;
+            UiManager.Instance.ChangeText(UiElementType.Lives, $"{currentLives}/{_maxLives}");
+        }
         void RoundFailureLogic()
         {
             PauseGameLogic();
-            Debug.Log("You lose this round asshole!");
-            //TODO: Make this a levelInfo?
             _canvas.SetLevelText(
                 "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
             _canvas.SetObjectives(null);
@@ -216,7 +231,7 @@ namespace _Scripts.State
             Quaternion rotation = CenterRotation(randomSpawnPosition);
             _playerEntity = EntitySpawner.CreateEntity<SnakeEntity>(
                 playerDefinition,
-                GetRandomSpawnPosition(minRange, maxRange),
+                randomSpawnPosition,
                 transform,
                 rotation
             );
@@ -306,15 +321,14 @@ namespace _Scripts.State
             );
         }
         
-        Quaternion CenterRotation(Vector3 currentPosition)
-        {
-            Vector3 center = (minRange + maxRange) / 2f;
-
-
-            Vector3 directionToCenter = center - currentPosition;
-
-            return Quaternion.LookRotation(directionToCenter.normalized, Vector3.up);
-
+        Quaternion CenterRotation(Vector3 position)
+        {       var dx = -position.x;
+                var dz = -position.z;
+                float angleRadians = Mathf.Atan2(dx, dz);
+                var angleDegrees = angleRadians * Mathf.Rad2Deg;
+                Quaternion angleRot = Quaternion.Euler(0f, angleDegrees, 0f);
+                return angleRot;
         }
+  
     }
 }
