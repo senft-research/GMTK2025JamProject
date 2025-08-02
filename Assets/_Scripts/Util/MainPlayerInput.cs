@@ -108,6 +108,15 @@ public partial class @MainPlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""eae2ff99-5d86-42f9-84c1-e0476332b5e1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -286,6 +295,28 @@ public partial class @MainPlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Move Raycast"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""98a6e8a4-8021-4b43-b03f-51d6b27dd9c7"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc96950c-2ba6-4834-8f5f-f7e3e5b9a85e"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -296,6 +327,7 @@ public partial class @MainPlayerInput: IInputActionCollection2, IDisposable
         m_SnakeGame = asset.FindActionMap("SnakeGame", throwIfNotFound: true);
         m_SnakeGame_MoveDirection = m_SnakeGame.FindAction("MoveDirection", throwIfNotFound: true);
         m_SnakeGame_MoveRaycast = m_SnakeGame.FindAction("Move Raycast", throwIfNotFound: true);
+        m_SnakeGame_Pause = m_SnakeGame.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@MainPlayerInput()
@@ -378,6 +410,7 @@ public partial class @MainPlayerInput: IInputActionCollection2, IDisposable
     private List<ISnakeGameActions> m_SnakeGameActionsCallbackInterfaces = new List<ISnakeGameActions>();
     private readonly InputAction m_SnakeGame_MoveDirection;
     private readonly InputAction m_SnakeGame_MoveRaycast;
+    private readonly InputAction m_SnakeGame_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "SnakeGame".
     /// </summary>
@@ -397,6 +430,10 @@ public partial class @MainPlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "SnakeGame/MoveRaycast".
         /// </summary>
         public InputAction @MoveRaycast => m_Wrapper.m_SnakeGame_MoveRaycast;
+        /// <summary>
+        /// Provides access to the underlying input action "SnakeGame/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_SnakeGame_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -429,6 +466,9 @@ public partial class @MainPlayerInput: IInputActionCollection2, IDisposable
             @MoveRaycast.started += instance.OnMoveRaycast;
             @MoveRaycast.performed += instance.OnMoveRaycast;
             @MoveRaycast.canceled += instance.OnMoveRaycast;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -446,6 +486,9 @@ public partial class @MainPlayerInput: IInputActionCollection2, IDisposable
             @MoveRaycast.started -= instance.OnMoveRaycast;
             @MoveRaycast.performed -= instance.OnMoveRaycast;
             @MoveRaycast.canceled -= instance.OnMoveRaycast;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -500,5 +543,12 @@ public partial class @MainPlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveRaycast(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
 }
