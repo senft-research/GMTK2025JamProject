@@ -88,19 +88,24 @@ namespace _Scripts.State
         {
             currentLives = _maxLives;
             ChangeLevel(currentLevel);
-            SpawnPlayer();
+            SpawnEntites(false);
             PauseGameLogic();
             ShowGameStartUI();
         }
 
-        public void StartNewRound()
+        void StartNewRound()
         {
             DespawnPlayer();
             ChangeLevel(currentLevel);
+            SpawnEntites(true);
             PauseGameLogic();
-            SpawnPlayer();
-            SpawnGhosts();
             ShowGameStartUI();
+        }
+
+        void SpawnEntites(bool includeGhosts = false)
+        {
+            SpawnPlayer();
+            if(includeGhosts) SpawnGhosts();
         }
 
         public void StartNewLevel()
@@ -112,12 +117,12 @@ namespace _Scripts.State
             ShowGameStartUI();
         }
 
-        public void EndRound(string endRoundReason = "")
+        void EndRound(string endRoundReason = "")
         {
             EndRound(true, endRoundReason);
         }
 
-        public void EndRound(bool timeOver, string endRoundReason = "")
+        void EndRound(bool timeOver, string endRoundReason = "")
         {
             Debug.Log($"END OF ROUND!: REASON: {endRoundReason}");
             if (!timeOver)

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Fix of MainGameManager.cs merge issue (merging back into main branch asap to ensure no issue going forward." />
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Fixed GUI settings in scenes to scale with resolution." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-advanced_logic" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,6 +35,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/GameGui.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
@@ -43,6 +44,7 @@
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Level/LevelDefinition.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Trackables/ITrackable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,7 +73,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "hotfix-UI__fixes",
     "last_opened_file_path": "/home/jordan/GMTK2025JamProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -321,7 +323,23 @@
       <option name="project" value="LOCAL" />
       <updated>1754166583993</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Fixed bug with failure logic not triggering propperly.">
+      <option name="closed" value="true" />
+      <created>1754167916313</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1754167916313</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fixed GUI settings in scenes to scale with resolution.">
+      <option name="closed" value="true" />
+      <created>1754168106076</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1754168106076</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,6 +388,8 @@
     <MESSAGE value="Got ghost version of snake working" />
     <MESSAGE value="Bug fixes, refactor of tracking logic to be less bug prone / flexible, and better EndRound logic. &#10;&#10;Also added InputHandler.cs impl to the character controller (and then fixed it... twice...). &#10;&#10;Can you tell we are in the last 21 hours of the jam yet? haha" />
     <MESSAGE value="Fix of MainGameManager.cs merge issue (merging back into main branch asap to ensure no issue going forward." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix of MainGameManager.cs merge issue (merging back into main branch asap to ensure no issue going forward." />
+    <MESSAGE value="Fixed bug with failure logic not triggering propperly." />
+    <MESSAGE value="Fixed GUI settings in scenes to scale with resolution." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed GUI settings in scenes to scale with resolution." />
   </component>
 </project>
