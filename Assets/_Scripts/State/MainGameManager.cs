@@ -8,6 +8,7 @@ using _Scripts.Model.Level;
 using _Scripts.State.Pausing;
 using _Scripts.UI;
 using _Scripts.Util;
+using _Scripts.Util.Pools.Audio;
 using KBCore.Refs;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,10 +17,15 @@ namespace _Scripts.State
 {
     public class MainGameManager : ValidatedMonoBehaviour
     {
+        //TODO Need to add the ghost logic in, including its pool.
+        //TODO Need to add logic for different types of trash body.
+        //TODO Need to add animation / effects logic.
+        //TODO Need to set up level music / game music logic.
+        //TODO Need to POTENTIALLY set up "rewind" logic for physically rewinding the round to the beginning. 
         #region Timer Logic
 
-        GameLogicTimer roundTimer;
-        GameLogicTimer trashSpawnTimer;
+        GameLogicTimer _roundTimer;
+        GameLogicTimer _trashSpawnTimer;
 
         #endregion
 
@@ -56,21 +62,21 @@ namespace _Scripts.State
 
         void CheckTimersRunning()
         {
-            if (!trashSpawnTimer.IsRunning)
+            if (!_trashSpawnTimer.IsRunning)
             {
-                trashSpawnTimer.Start();
+                _trashSpawnTimer.Start();
             }
 
-            if (!roundTimer.IsRunning)
+            if (!_roundTimer.IsRunning)
             {
-                trashSpawnTimer.Start();
+                _trashSpawnTimer.Start();
             }
         }
 
         void UpdateTimers()
         {
-            roundTimer.Update(Time.deltaTime);
-            trashSpawnTimer.Update(Time.deltaTime);
+            _roundTimer.Update(Time.deltaTime);
+            _trashSpawnTimer.Update(Time.deltaTime);
         }
 
         public void StartNewGame()
@@ -144,18 +150,18 @@ namespace _Scripts.State
 
         void SetTimers()
         {
-            roundTimer = new GameLogicTimer(_currentLevelDefinition.roundDuration);
-            trashSpawnTimer = new GameLogicTimer(_currentLevelDefinition.trashSpawnInterval);
-            roundTimer.OnTimerFinished += EndRound;
-            roundTimer.OnTimeChanged += timeRemaining =>
+            _roundTimer = new GameLogicTimer(_currentLevelDefinition.roundDuration);
+            _trashSpawnTimer = new GameLogicTimer(_currentLevelDefinition.trashSpawnInterval);
+            _roundTimer.OnTimerFinished += EndRound;
+            _roundTimer.OnTimeChanged += timeRemaining =>
             {
                 UiManager.Instance.ChangeBarPercent(
                     UiElementType.Timer,
-                    timeRemaining / roundTimer.Duration
+                    timeRemaining / _roundTimer.Duration
                 );
             };
 
-            trashSpawnTimer.OnTimerFinished += () =>
+            _trashSpawnTimer.OnTimerFinished += () =>
             {
                 Vector3 minRange = new Vector3(-41f, 0f, -21f);
                 Vector3 maxRange = new Vector3(41f, 0f, 21f);

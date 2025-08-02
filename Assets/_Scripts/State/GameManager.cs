@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using _Scripts.Util.Pools.Audio;
+using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +15,9 @@ namespace _Scripts.State
 
         public GameState gameState;
 
+        [SerializeField, Child]
+        MusicManager musicManager;
+        
         public MainGameManager MainGameManager { private get; set; }
 
         void Awake()
@@ -26,7 +31,6 @@ namespace _Scripts.State
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
-
             SubscribeGameStates();
             SceneManager.sceneLoaded += OnSceneLoaded;
             ChangeState(GameState.MainMenu);
