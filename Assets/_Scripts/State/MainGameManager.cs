@@ -108,8 +108,11 @@ namespace _Scripts.State
         {
             //TODO Remove this before we public
             Debug.Log("You lose this round asshole!");
-            _canvas.SetLevelText("You FAILED >:(");
+            //TODO: Make this a levelInfo?
+            _canvas.SetLevelText(
+                "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
             _canvas.SetObjectives(null);
+            _canvas.SetMainMenuButton(true);
         }
         void PauseGameLogic()
         {
@@ -220,6 +223,7 @@ namespace _Scripts.State
                 _canvas.SetObjectives(_currentLevelDefinition.levelInfo.objectives);
                 _canvas.SetLevelText(_currentLevelDefinition.levelInfo.InfoText);
             }
+            _canvas.SetMainMenuButton(false);
             SetTimers();
             UnloadTerrain();
             LoadTerrain();
