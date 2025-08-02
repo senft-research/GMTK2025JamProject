@@ -12,7 +12,7 @@ namespace _Scripts.Model.Level.Canvas
         [SerializeField, Child]
         LevelText levelText;
 
-        public void SetObjectives(List<string> objectives)
+        public void SetObjectives(List<string>? objectives)
         {
             levelObjectives.SetObjectives(objectives);
         }

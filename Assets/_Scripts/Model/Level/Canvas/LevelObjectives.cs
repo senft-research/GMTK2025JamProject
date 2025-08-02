@@ -15,8 +15,13 @@ namespace _Scripts.Model.Level.Canvas
             _text = gameObject.GetComponent<TMP_Text>();
         }
         
-        public void SetObjectives(List<string> objectives)
+        public void SetObjectives(List<string>? objectives)
         {
+            if (objectives == null)
+            {
+                _text.SetText("");
+                return;
+            }
             _stringToSend = String.Empty;
             foreach (string objective in objectives)
             {

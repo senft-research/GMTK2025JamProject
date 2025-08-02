@@ -108,6 +108,8 @@ namespace _Scripts.State
         {
             //TODO Remove this before we public
             Debug.Log("You lose this round asshole!");
+            _canvas.SetLevelText("You FAILED >:(");
+            _canvas.SetObjectives(null);
         }
         void PauseGameLogic()
         {
