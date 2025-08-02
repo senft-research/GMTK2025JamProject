@@ -443,14 +443,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a2f1b6ac2217c1f31aa09a7e540d9282, type: 2}
     roundDuration: 20
     trashSpawnInterval: 1
-  - levelName: Level 1
-    terrainPrefab: {fileID: 6378044288443088689, guid: 132d4199c3f6d6a62be9f080e0e1686b, type: 3}
-    playerStartPosition: {x: 0, y: 0, z: 0}
-    potentialTrashItems:
-    - {fileID: 11400000, guid: eb65c5a6669344110b0bb2abe78ed62a, type: 2}
-    - {fileID: 11400000, guid: a2f1b6ac2217c1f31aa09a7e540d9282, type: 2}
-    roundDuration: 20
-    trashSpawnInterval: 1
     levelInfo: {fileID: 11400000, guid: bc65899ef1db01e4da4cbdfd9fcb5a98, type: 2}
   _canvas: {fileID: 1131731453}
 --- !u!4 &273443183
