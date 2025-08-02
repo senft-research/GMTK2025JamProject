@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Bug fixes, refactor of tracking logic to be less bug prone / flexible, and better EndRound logic. &#10;&#10;Also added InputHandler.cs impl to the character controller (and then fixed it... twice...). &#10;&#10;Can you tell we are in the last 21 hours of the jam yet? haha" />
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Fix of MainGameManager.cs merge issue (merging back into main branch asap to ensure no issue going forward." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="feature-advanced_logic" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/GamePauseLogicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/IPausable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -70,7 +71,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature-advanced__logic",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "/home/jordan/GMTK2025JamProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -158,7 +159,7 @@
       <workItem from="1754069980945" duration="2007000" />
       <workItem from="1754072087951" duration="15398000" />
       <workItem from="1754090010665" duration="4868000" />
-      <workItem from="1754145187615" duration="17034000" />
+      <workItem from="1754145187615" duration="17434000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -312,7 +313,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754166311904</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fix of MainGameManager.cs merge issue (merging back into main branch asap to ensure no issue going forward.">
+      <option name="closed" value="true" />
+      <created>1754166583993</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1754166583993</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,25 +369,7 @@
     <MESSAGE value="Hotfix for increasing the max Position history in SnakeEntity.cs and fixing the prefabs used for the SnakeBody." />
     <MESSAGE value="Got ghost version of snake working" />
     <MESSAGE value="Bug fixes, refactor of tracking logic to be less bug prone / flexible, and better EndRound logic. &#10;&#10;Also added InputHandler.cs impl to the character controller (and then fixed it... twice...). &#10;&#10;Can you tell we are in the last 21 hours of the jam yet? haha" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes, refactor of tracking logic to be less bug prone / flexible, and better EndRound logic. &#10;&#10;Also added InputHandler.cs impl to the character controller (and then fixed it... twice...). &#10;&#10;Can you tell we are in the last 21 hours of the jam yet? haha" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs</url>
-          <line>27</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" containingFunctionPresentation="Method 'Awake'">
-            <startOffsets>
-              <option value="761" />
-            </startOffsets>
-            <endOffsets>
-              <option value="798" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Fix of MainGameManager.cs merge issue (merging back into main branch asap to ensure no issue going forward." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix of MainGameManager.cs merge issue (merging back into main branch asap to ensure no issue going forward." />
   </component>
 </project>
