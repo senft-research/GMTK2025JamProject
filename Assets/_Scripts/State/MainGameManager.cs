@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using _Scripts.Model.Collidables;
 using _Scripts.Model.Collidables.Trash;
 using _Scripts.Model.Entities;
@@ -12,7 +14,9 @@ using _Scripts.UI;
 using _Scripts.Util;
 using KBCore.Refs;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 namespace _Scripts.State
 {
@@ -227,7 +231,7 @@ namespace _Scripts.State
             Quaternion rotation = CenterRotation(randomSpawnPosition);
             _playerEntity = EntitySpawner.CreateEntity<SnakeEntity>(
                 playerDefinition,
-                GetRandomSpawnPosition(minRange, maxRange),
+                randomSpawnPosition,
                 transform,
                 rotation
             );
@@ -317,15 +321,14 @@ namespace _Scripts.State
             );
         }
         
-        Quaternion CenterRotation(Vector3 currentPosition)
-        {
-            Vector3 center = (minRange + maxRange) / 2f;
-
-
-            Vector3 directionToCenter = center - currentPosition;
-
-            return Quaternion.LookRotation(directionToCenter.normalized, Vector3.up);
-
+        Quaternion CenterRotation(Vector3 position)
+        {       var dx = -position.x;
+                var dz = -position.z;
+                float angleRadians = Mathf.Atan2(dx, dz);
+                var angleDegrees = angleRadians * Mathf.Rad2Deg;
+                Quaternion angleRot = Quaternion.Euler(0f, angleDegrees, 0f);
+                return angleRot;
         }
+  
     }
 }
