@@ -5,6 +5,7 @@ using _Scripts.Model.Collidables.Trash;
 using _Scripts.Model.Entities;
 using _Scripts.Model.Entities.Snake;
 using _Scripts.Model.Level;
+using _Scripts.Model.Level.Canvas;
 using _Scripts.Model.Trackables;
 using _Scripts.State.Pausing;
 using _Scripts.UI;
