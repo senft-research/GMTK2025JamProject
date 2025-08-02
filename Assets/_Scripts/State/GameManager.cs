@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Scripts.Util;
 using _Scripts.Util.Pools.Audio;
 using KBCore.Refs;
 using UnityEngine;
@@ -17,6 +18,9 @@ namespace _Scripts.State
 
         [SerializeField, Child]
         MusicManager musicManager;
+
+        [SerializeField, Child]
+        InputHandler inputHandler;
         
         public MainGameManager MainGameManager { private get; set; }
 
@@ -96,6 +100,11 @@ namespace _Scripts.State
         {
             get { return MainGameManager.CurrentPoints; }
             set { MainGameManager.CurrentPoints = value; }
+        }
+
+        public void SetInputHandlerCamera(Camera camera)
+        {
+            inputHandler.RaycastCamera = camera;
         }
     }
 }

@@ -5,10 +5,10 @@ using _Scripts.Model.Collidables.Trash;
 using _Scripts.Model.Entities;
 using _Scripts.Model.Entities.Snake;
 using _Scripts.Model.Level;
+using _Scripts.Model.Trackables;
 using _Scripts.State.Pausing;
 using _Scripts.UI;
 using _Scripts.Util;
-using _Scripts.Util.Pools.Audio;
 using KBCore.Refs;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,7 +17,6 @@ namespace _Scripts.State
 {
     public class MainGameManager : ValidatedMonoBehaviour
     {
-        //TODO Need to add the ghost logic in, including its pool.
         //TODO Need to add logic for different types of trash body.
         //TODO Need to add animation / effects logic.
         //TODO Need to set up level music / game music logic.
@@ -36,7 +35,11 @@ namespace _Scripts.State
 
         [SerializeField]
         List<LevelDefinition> levels;
+        Vector3 minRange = new(-35f, 0f, -26f);
+        Vector3 maxRange = new(35f, 0f, 26f);
 
+        List<TrackingModule> ghostPool = new();
+        
         LevelDefinition? _currentLevelDefinition;
 
         [SerializeField, Child]
@@ -90,21 +93,35 @@ namespace _Scripts.State
         public void StartNewRound()
         {
             DespawnPlayer();
-            ChangeLevel(currentLevel + 1);
+            ChangeLevel(currentLevel);
             PauseGameLogic();
+            SpawnPlayer();
+            SpawnGhosts();
             ShowGameStartUI();
         }
 
-        public void EndRound()
+        public void StartNewLevel()
         {
-            EndRound(true);
+            DespawnPlayer();
+            ChangeLevel(currentLevel);
+            PauseGameLogic();
+            SpawnPlayer();
+            ShowGameStartUI();
         }
 
-        public void EndRound(bool timeOver)
+        public void EndRound(string endRoundReason = "")
         {
+            EndRound(true, endRoundReason);
+        }
+
+        public void EndRound(bool timeOver, string endRoundReason = "")
+        {
+            Debug.Log($"END OF ROUND!: REASON: {endRoundReason}");
             if (!timeOver)
             {
                 RoundFailureLogic();
+                StartNewRound();
+                return;
             }
             StartNewRound();
         }
@@ -129,6 +146,14 @@ namespace _Scripts.State
             GamePauseLogicManager.Instance.ResumeGame(isPauseMenu);
         }
 
+        public void SpawnGhosts(int amount = 1)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                ghostPool[Random.Range(0,ghostPool.Count)].ResetReplay();
+            }
+        }
+        
         public void EndGame(bool playerWon) { }
 
         GameObject activeTerrain;
@@ -152,7 +177,10 @@ namespace _Scripts.State
         {
             _roundTimer = new GameLogicTimer(_currentLevelDefinition.roundDuration);
             _trashSpawnTimer = new GameLogicTimer(_currentLevelDefinition.trashSpawnInterval);
-            _roundTimer.OnTimerFinished += EndRound;
+            _roundTimer.OnTimerFinished += () =>
+            { EndRound("The Timer Ran out!");
+
+            };
             _roundTimer.OnTimeChanged += timeRemaining =>
             {
                 UiManager.Instance.ChangeBarPercent(
@@ -163,8 +191,6 @@ namespace _Scripts.State
 
             _trashSpawnTimer.OnTimerFinished += () =>
             {
-                Vector3 minRange = new Vector3(-35f, 0f, -26f);
-                Vector3 maxRange = new Vector3(35f, 0f, 26f);
                 SpawnRandomTrash(GetRandomSpawnPosition(minRange, maxRange));
             };
         }
@@ -177,23 +203,34 @@ namespace _Scripts.State
 
         void SpawnPlayer()
         {
+            Vector3 randomSpawnPosition = GetRandomSpawnPosition(minRange, maxRange);
+            Quaternion rotation = CenterRotation(randomSpawnPosition);
             _playerEntity = EntitySpawner.CreateEntity<SnakeEntity>(
                 playerDefinition,
-                Vector3.zero,
+                GetRandomSpawnPosition(minRange, maxRange),
                 transform,
-                Quaternion.identity
+                rotation
             );
 
             _playerEntity.TrackingModule.StartTracking();
-            _playerEntity.OnCollision += other =>
-            {
-                EndRound(false);
-            };
+            _playerEntity.OnCollision += CollisionEndRound;
+        }
+        public void CollisionEndRound(Collider other)
+        {
+            EndRound(false, $"{other.name}");
         }
 
         void DespawnPlayer()
         {
             _playerEntity.TrackingModule.StopTracking();
+            _playerEntity.TrackingModule.InitReplayableEntity(CollisionEndRound,false);
+            _playerEntity.RemoveBodies();
+            _playerEntity.gameObject.SetActive(false);
+            if (_playerEntity.TrackingModule.TrackingDataCount == 0)
+            {
+                return;
+            }
+            ghostPool.Add(_playerEntity.TrackingModule);
         }
 
         void ShowGameStartUI()
@@ -220,6 +257,7 @@ namespace _Scripts.State
             SetTimers();
             UnloadTerrain();
             LoadTerrain();
+            GameManger.Instance.SetInputHandlerCamera(Camera.main);
         }
 
         void SpawnRandomTrash(Vector3 spawnPosition)
@@ -236,6 +274,14 @@ namespace _Scripts.State
             );
         }
 
+        
+
+        public int CurrentPoints
+        {
+            get { return currentScore; }
+            set { currentScore += value; }
+        }
+        
         Vector3 GetRandomSpawnPosition(Vector3 minRange, Vector3 maxRange)
         {
             return new Vector3(
@@ -244,11 +290,16 @@ namespace _Scripts.State
                 Random.Range(minRange.z, maxRange.z)
             );
         }
-
-        public int CurrentPoints
+        
+        Quaternion CenterRotation(Vector3 currentPosition)
         {
-            get { return currentScore; }
-            set { currentScore += value; }
+            Vector3 center = (minRange + maxRange) / 2f;
+
+
+            Vector3 directionToCenter = center - currentPosition;
+
+            return Quaternion.LookRotation(directionToCenter.normalized, Vector3.up);
+
         }
     }
 }

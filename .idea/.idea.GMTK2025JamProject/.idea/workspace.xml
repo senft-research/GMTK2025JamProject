@@ -5,68 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Got ghost version of snake working">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBody.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBody.blend.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBody.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBody.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab 1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab 1.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.blend.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/BodyMaterials.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/BodyMaterials/BinRing.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/BodyMaterials/BinRing.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/BodyMaterials/TrashBin.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/BodyMaterials/TrashBin.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Body.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Body.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Eye.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Eye.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/EyeBlack.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/EyeBlack.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Mouth.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Mouth.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Tongue.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Tongue.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Void.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/HeadMaterial/Void.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/BodyMaterials.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/BodyMaterials/BinRing.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/BodyMaterials/BinRing.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/BodyMaterials/TrashBin.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/BodyMaterials/TrashBin.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Body.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Body.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Eye.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Eye.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/EyeBlack.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/EyeBlack.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Mouth.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Mouth.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Tongue.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Tongue.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Void.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Materials/HeadMaterial/Void.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/GhostShader.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/GhostShader.shadergraph.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/GhostMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/BodyPart.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/BodyPart.blend.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/SnakeHead.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Snake/SnakeHead.blend.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scriptable Objects/BaseSnakeDef.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scriptable Objects/BaseSnakeDef.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Scriptable Objects/GhostDefinition.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Scriptable Objects/GhostDefinition.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level Prefabs/Level1Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level Prefabs/Level1Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeTestBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeTestBootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/ITrackable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/ITrackable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/TrackingModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/TrackingModule.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.inputactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,13 +56,14 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Prefabs/Entities/BodyPrefab.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Level/LevelDefinition.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/GamePauseLogicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/IPausable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -136,7 +95,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "editor.stickyLines",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -217,6 +176,7 @@
       <workItem from="1754069980945" duration="2007000" />
       <workItem from="1754072087951" duration="15398000" />
       <workItem from="1754090010665" duration="4868000" />
+      <workItem from="1754145187615" duration="16609000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -410,5 +370,24 @@
     <MESSAGE value="Hotfix for increasing the max Position history in SnakeEntity.cs and fixing the prefabs used for the SnakeBody." />
     <MESSAGE value="Got ghost version of snake working" />
     <option name="LAST_COMMIT_MESSAGE" value="Got ghost version of snake working" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs</url>
+          <line>27</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" containingFunctionPresentation="Method 'Awake'">
+            <startOffsets>
+              <option value="761" />
+            </startOffsets>
+            <endOffsets>
+              <option value="798" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

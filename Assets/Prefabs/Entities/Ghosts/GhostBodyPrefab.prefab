@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7348969934339473434}
   - component: {fileID: 8005399679953137025}
   - component: {fileID: 3681507584816600460}
+  - component: {fileID: 2655015100099003248}
   m_Layer: 0
   m_Name: GhostBodyPrefab
   m_TagString: Snake
@@ -75,6 +76,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags: []
   isSpawning: 1
+--- !u!65 &2655015100099003248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138687469246100104}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.91, y: 1, z: 0.93}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1001 &7175287793017959119
 PrefabInstance:
   m_ObjectHideFlags: 0

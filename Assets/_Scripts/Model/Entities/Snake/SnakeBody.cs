@@ -7,6 +7,7 @@ namespace _Scripts.Model.Entities.Snake
     {
         public bool isSpawning = true;
 
+        public bool isGhost = false;
         public void InitReturnLogic() { }
 
         public GameObject PoolableObject() => gameObject;
