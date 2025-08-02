@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Fixed GUI settings in scenes to scale with resolution." />
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Begun work on new logic for ending rounds." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +45,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Trackables/ITrackable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -73,7 +74,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "hotfix-UI__fixes",
+    "git-widget-placeholder": "feature-final__level__logic",
     "last_opened_file_path": "/home/jordan/GMTK2025JamProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -339,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754168106076</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Begun work on new logic for ending rounds.">
+      <option name="closed" value="true" />
+      <created>1754168738822</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1754168738822</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,6 +399,7 @@
     <MESSAGE value="Fix of MainGameManager.cs merge issue (merging back into main branch asap to ensure no issue going forward." />
     <MESSAGE value="Fixed bug with failure logic not triggering propperly." />
     <MESSAGE value="Fixed GUI settings in scenes to scale with resolution." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed GUI settings in scenes to scale with resolution." />
+    <MESSAGE value="Begun work on new logic for ending rounds." />
+    <option name="LAST_COMMIT_MESSAGE" value="Begun work on new logic for ending rounds." />
   </component>
 </project>
