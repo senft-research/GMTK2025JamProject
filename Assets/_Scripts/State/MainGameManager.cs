@@ -5,6 +5,7 @@ using _Scripts.Model.Collidables.Trash;
 using _Scripts.Model.Entities;
 using _Scripts.Model.Entities.Snake;
 using _Scripts.Model.Level;
+using _Scripts.Model.Level.Canvas;
 using _Scripts.State.Pausing;
 using _Scripts.UI;
 using _Scripts.Util;
@@ -34,7 +35,7 @@ namespace _Scripts.State
         LevelDefinition? _currentLevelDefinition;
 
         [SerializeField, Child]
-        Canvas _canvas;
+        LevelCanvas _canvas;
 
         int currentLevel = 0;
 
@@ -111,6 +112,7 @@ namespace _Scripts.State
         void PauseGameLogic()
         {
             GamePauseLogicManager.Instance.PauseGame(false);
+            
             _canvas.gameObject.SetActive(true);
         }
 
@@ -211,6 +213,11 @@ namespace _Scripts.State
 
             currentLevel = levelNumber;
             _currentLevelDefinition = levels[levelNumber];
+            if (_currentLevelDefinition != null)
+            {
+                _canvas.SetObjectives(_currentLevelDefinition.levelInfo.objectives);
+                _canvas.SetLevelText(_currentLevelDefinition.levelInfo.InfoText);
+            }
             SetTimers();
             UnloadTerrain();
             LoadTerrain();
