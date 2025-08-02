@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Initial Logic Impl and working" />
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Got ghost version of snake working">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level Prefabs/Level1Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level Prefabs/Level1Prefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeTestBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeTestBootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/ITrackable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/ITrackable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/TrackingModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/TrackingModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.inputactions" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,13 +60,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Level/LevelDefinition.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/GamePauseLogicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/IPausable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/SoundData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Util/Pools/ObjectPoolManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -66,14 +88,14 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#9 on feature-level__logic__new",
+    "git-widget-placeholder": "feature-advanced__logic",
     "last_opened_file_path": "/home/jordan/GMTK2025JamProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "editor.stickyLines",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -153,6 +175,8 @@
       <workItem from="1754068898939" duration="874000" />
       <workItem from="1754069980945" duration="2007000" />
       <workItem from="1754072087951" duration="15398000" />
+      <workItem from="1754090010665" duration="4868000" />
+      <workItem from="1754145187615" duration="16609000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -290,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754081914162</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Hotfix for increasing the max Position history in SnakeEntity.cs and fixing the prefabs used for the SnakeBody.">
+      <option name="closed" value="true" />
+      <created>1754089415837</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1754089415837</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +367,27 @@
     <MESSAGE value="Changes to scene also commited" />
     <MESSAGE value="The main logic is finally working properly for the movement in SnakeEntity.cs. (Thank you god!)" />
     <MESSAGE value="Initial Logic Impl and working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Logic Impl and working" />
+    <MESSAGE value="Hotfix for increasing the max Position history in SnakeEntity.cs and fixing the prefabs used for the SnakeBody." />
+    <MESSAGE value="Got ghost version of snake working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Got ghost version of snake working" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs</url>
+          <line>27</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" containingFunctionPresentation="Method 'Awake'">
+            <startOffsets>
+              <option value="761" />
+            </startOffsets>
+            <endOffsets>
+              <option value="798" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

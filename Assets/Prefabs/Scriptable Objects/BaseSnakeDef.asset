@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: 1165259860007583428, guid: f98145d4c280a7dbf9fd90d00b8cbe70, type: 3}
   entityName: BaseSnake
-  BaseSpeed: 10
+  BaseSpeed: 15

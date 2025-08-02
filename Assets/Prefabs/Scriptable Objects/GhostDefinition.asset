@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3273d3010a24d8bb3643a130bb9d7c8, type: 3}
   m_Name: GhostDefinition
   m_EditorClassIdentifier: 
-  entityPrefab: {fileID: 1165259860007583428, guid: bb6597ad79d019d4d9adfc09b1849637, type: 3}
+  entityPrefab: {fileID: 943447964686096842, guid: ba2c4f028c09f574d9aca816048a2f1a, type: 3}
   entityName: Ghost Snake
-  BaseSpeed: 10
+  BaseSpeed: 15

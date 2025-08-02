@@ -3,7 +3,17 @@ guid: fe3bfa1d2225ef0ebadc0a4759f8ffe4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BinRing
+    second: {fileID: 2100000, guid: 4c98fb56f04f39c1eb855f7530995826, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrashBin
+    second: {fileID: 2100000, guid: 4001c54425105107aafe40894832c768, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -38,7 +38,7 @@ namespace _Scripts.Model.Entities.Snake
         IEnumerator RecordAndSpawnGhost()
         {
             yield return new WaitForSeconds(15f);
-            entity.TrackingModule.StartReplay();
+            entity.TrackingModule.InitReplayableEntity(null);
         }
     }
 }
