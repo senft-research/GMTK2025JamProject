@@ -163,8 +163,8 @@ namespace _Scripts.State
 
             _trashSpawnTimer.OnTimerFinished += () =>
             {
-                Vector3 minRange = new Vector3(-41f, 0f, -21f);
-                Vector3 maxRange = new Vector3(41f, 0f, 21f);
+                Vector3 minRange = new Vector3(-35f, 0f, -26f);
+                Vector3 maxRange = new Vector3(35f, 0f, 26f);
                 SpawnRandomTrash(GetRandomSpawnPosition(minRange, maxRange));
             };
         }

@@ -101,6 +101,8 @@ namespace _Scripts.Model.Entities.Snake
                         firstInputFrameMade = true;
 
                     _bodySpawnedThisFrame = false;
+
+                    CameraController.Instance.UpdateCameraPosition(transform.position);
                 }
                 else if (TrackingModule.IsReplaying() && isGhost)
                 {
