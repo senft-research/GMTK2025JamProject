@@ -125,14 +125,19 @@ namespace _Scripts.State
         void EndRound(bool timeOver, string endRoundReason = "")
         {
             Debug.Log($"END OF ROUND!: REASON: {endRoundReason}");
-            if (!timeOver)
+            if (currentLives <= 0)
             {
                 RoundFailureLogic();
-                return;
             }
             StartNewRound();
         }
 
+
+        void ReduceLives(int livesToReduce)
+        {
+            currentLives = -livesToReduce;
+            UiManager.Instance.ChangeBarPercent(UiElementType.Lives, currentLives/_maxLives);
+        }
         void RoundFailureLogic()
         {
             PauseGameLogic();
