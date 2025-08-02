@@ -58,13 +58,14 @@ namespace _Scripts.State
 
         void Update()
         {
+            
             if (GamePauseLogicManager.Instance.IsPaused)
                 return;
-
+            if(currentLives == 0) ChangeLives(_maxLives);
             CheckTimersRunning();
             UpdateTimers();
         }
-
+        
         void CheckTimersRunning()
         {
             if (!_trashSpawnTimer.IsRunning)
@@ -74,7 +75,7 @@ namespace _Scripts.State
 
             if (!_roundTimer.IsRunning)
             {
-                _trashSpawnTimer.Start();
+                _roundTimer.Start();
             }
         }
 
@@ -86,7 +87,7 @@ namespace _Scripts.State
 
         public void StartNewGame()
         {
-            currentLives = _maxLives;
+            
             ChangeLevel(currentLevel);
             SpawnEntites(false);
             PauseGameLogic();
@@ -125,24 +126,24 @@ namespace _Scripts.State
         void EndRound(bool timeOver, string endRoundReason = "")
         {
             Debug.Log($"END OF ROUND!: REASON: {endRoundReason}");
-            if (currentLives <= 0)
+            if (currentLives - 1 <= 0)
             {
                 RoundFailureLogic();
+                return;
             }
+            ChangeLives(-1);
             StartNewRound();
         }
 
 
-        void ReduceLives(int livesToReduce)
+        void ChangeLives(int changeAmount)
         {
-            currentLives = -livesToReduce;
-            UiManager.Instance.ChangeBarPercent(UiElementType.Lives, currentLives/_maxLives);
+            currentLives += changeAmount;
+            UiManager.Instance.ChangeText(UiElementType.Lives, $"{currentLives}/{_maxLives}");
         }
         void RoundFailureLogic()
         {
             PauseGameLogic();
-            Debug.Log("You lose this round asshole!");
-            //TODO: Make this a levelInfo?
             _canvas.SetLevelText(
                 "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
             _canvas.SetObjectives(null);
