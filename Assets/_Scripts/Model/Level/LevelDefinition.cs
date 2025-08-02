@@ -15,6 +15,7 @@ namespace _Scripts.Model.Level
         public List<TrashDefinition> potentialTrashItems;
         public int roundDuration;
         public int trashSpawnInterval;
+        public LevelInfo levelInfo;
         int _trashTypesAmount;
 
         int TrashTypesAmount()

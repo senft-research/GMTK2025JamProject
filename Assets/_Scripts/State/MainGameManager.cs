@@ -5,6 +5,7 @@ using _Scripts.Model.Collidables.Trash;
 using _Scripts.Model.Entities;
 using _Scripts.Model.Entities.Snake;
 using _Scripts.Model.Level;
+using _Scripts.Model.Level.Canvas;
 using _Scripts.State.Pausing;
 using _Scripts.UI;
 using _Scripts.Util;
@@ -34,7 +35,7 @@ namespace _Scripts.State
         LevelDefinition? _currentLevelDefinition;
 
         [SerializeField, Child]
-        Canvas _canvas;
+        LevelCanvas _canvas;
 
         int currentLevel = 0;
 
@@ -107,10 +108,16 @@ namespace _Scripts.State
         {
             //TODO Remove this before we public
             Debug.Log("You lose this round asshole!");
+            //TODO: Make this a levelInfo?
+            _canvas.SetLevelText(
+                "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
+            _canvas.SetObjectives(null);
+            _canvas.SetMainMenuButton(true);
         }
         void PauseGameLogic()
         {
             GamePauseLogicManager.Instance.PauseGame(false);
+            
             _canvas.gameObject.SetActive(true);
         }
 
@@ -211,6 +218,12 @@ namespace _Scripts.State
 
             currentLevel = levelNumber;
             _currentLevelDefinition = levels[levelNumber];
+            if (_currentLevelDefinition != null)
+            {
+                _canvas.SetObjectives(_currentLevelDefinition.levelInfo.objectives);
+                _canvas.SetLevelText(_currentLevelDefinition.levelInfo.InfoText);
+            }
+            _canvas.SetMainMenuButton(false);
             SetTimers();
             UnloadTerrain();
             LoadTerrain();
