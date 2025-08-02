@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Got ghost version of snake working">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/BodyPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostBodyPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/Ghosts/GhostSnake.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Entities/SnakePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level Prefabs/Level1Prefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level Prefabs/Level1Prefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainGameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeBody.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeTestBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeTestBootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/ITrackable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/ITrackable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/SnakeInputFrame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/TrackingModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Trackables/TrackingModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/InputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/MainPlayerInput.inputactions" afterDir="false" />
-    </list>
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Bug fixes, refactor of tracking logic to be less bug prone / flexible, and better EndRound logic. &#10;&#10;Also added InputHandler.cs impl to the character controller (and then fixed it... twice...). &#10;&#10;Can you tell we are in the last 21 hours of the jam yet? haha" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,12 +36,15 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Level/LevelDefinition.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Trackables/ITrackable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/GamePauseLogicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/IPausable.cs" root0="FORCE_HIGHLIGHTING" />
@@ -176,7 +158,7 @@
       <workItem from="1754069980945" duration="2007000" />
       <workItem from="1754072087951" duration="15398000" />
       <workItem from="1754090010665" duration="4868000" />
-      <workItem from="1754145187615" duration="16609000" />
+      <workItem from="1754145187615" duration="17034000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -322,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754089415837</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Bug fixes, refactor of tracking logic to be less bug prone / flexible, and better EndRound logic. &#10;&#10;Also added InputHandler.cs impl to the character controller (and then fixed it... twice...). &#10;&#10;Can you tell we are in the last 21 hours of the jam yet? haha">
+      <option name="closed" value="true" />
+      <created>1754166311904</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1754166311904</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +359,8 @@
     <MESSAGE value="Initial Logic Impl and working" />
     <MESSAGE value="Hotfix for increasing the max Position history in SnakeEntity.cs and fixing the prefabs used for the SnakeBody." />
     <MESSAGE value="Got ghost version of snake working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Got ghost version of snake working" />
+    <MESSAGE value="Bug fixes, refactor of tracking logic to be less bug prone / flexible, and better EndRound logic. &#10;&#10;Also added InputHandler.cs impl to the character controller (and then fixed it... twice...). &#10;&#10;Can you tell we are in the last 21 hours of the jam yet? haha" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes, refactor of tracking logic to be less bug prone / flexible, and better EndRound logic. &#10;&#10;Also added InputHandler.cs impl to the character controller (and then fixed it... twice...). &#10;&#10;Can you tell we are in the last 21 hours of the jam yet? haha" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
