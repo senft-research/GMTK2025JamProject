@@ -40,7 +40,8 @@ namespace _Scripts.State
         Vector3 maxRange = new(35f, 0f, 26f);
 
         List<TrackingModule> ghostPool = new();
-        
+        int _maxLives = 3;
+        int currentLives;
         LevelDefinition? _currentLevelDefinition;
 
         [SerializeField, Child]
@@ -85,6 +86,7 @@ namespace _Scripts.State
 
         public void StartNewGame()
         {
+            currentLives = _maxLives;
             ChangeLevel(currentLevel);
             SpawnPlayer();
             PauseGameLogic();
@@ -121,7 +123,6 @@ namespace _Scripts.State
             if (!timeOver)
             {
                 RoundFailureLogic();
-                StartNewRound();
                 return;
             }
             StartNewRound();
@@ -129,13 +130,14 @@ namespace _Scripts.State
 
         void RoundFailureLogic()
         {
-            //TODO Remove this before we public
+            PauseGameLogic();
             Debug.Log("You lose this round asshole!");
             //TODO: Make this a levelInfo?
             _canvas.SetLevelText(
                 "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
             _canvas.SetObjectives(null);
             _canvas.SetMainMenuButton(true);
+            ShowGameStartUI();
         }
         void PauseGameLogic()
         {
