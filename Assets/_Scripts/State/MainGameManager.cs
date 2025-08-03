@@ -141,7 +141,10 @@ namespace _Scripts.State
                 RoundFailureLogic();
                 return;
             }
-            ChangeLives(-1);
+            if (!timeOver)
+            {
+                ChangeLives(-1);
+            }
             StartNewRound();
         }
 
