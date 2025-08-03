@@ -91,6 +91,17 @@ namespace _Scripts.Util.Pools
             pool.InactiveObjects.Add(objectToReturn);
             objectToReturn.transform.SetParent(pool.PoolContainer.transform);
         }
+
+        public void DeactivateAllObjects()
+        {
+            foreach (var pooledObjectInfo in _objectPools)
+            {
+                foreach (var valueInactiveObject in pooledObjectInfo.Value.InactiveObjects)
+                {
+                    valueInactiveObject.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     public class PooledObjectInfo

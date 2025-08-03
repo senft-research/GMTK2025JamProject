@@ -69,8 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a813a28c00c90e0bac400512b86614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  definition: {fileID: 0}
   isGhost: 0
-  steerSpeed: 180
+  steerSpeed: 250
   distanceBetween: 0.01
   gap: 310
   bodyPrefab: {fileID: 4892652117957592343, guid: b119c2acd333c05e393efd994485c7ab, type: 3}

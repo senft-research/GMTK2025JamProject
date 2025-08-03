@@ -180,14 +180,19 @@ namespace _Scripts.State
             _canvas.SetObjectives(null);
             _canvas.SetLevelText("Paused");
             _canvas.SetMainMenuButton(true, true);
-            PauseGameLogic();
+            PauseGame();
+        }
+
+        void PauseGame()
+        {
+            GamePauseLogicManager.Instance.PauseGame(true);
+            
+            _canvas.gameObject.SetActive(true);
         }
         
         void PauseGameLogic()
         {
-            GamePauseLogicManager.Instance.PauseGame(false);
-            
-            _canvas.gameObject.SetActive(true);
+            GamePauseLogicManager.Instance.PauseGame(true);
         }
 
         public void ResumeGameLogic(bool isPauseMenu = false)
