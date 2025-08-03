@@ -46,6 +46,8 @@ namespace _Scripts.State
         List<TrackingModule> ghostPool = new();
         int _maxLives = 3;
         int currentLives;
+        int currentRoundLevel = 0;
+        
         LevelDefinition? _currentLevelDefinition;
 
         [SerializeField, Child]
@@ -110,6 +112,8 @@ namespace _Scripts.State
             ChangeLevel(currentLevel);
             SpawnEntites(true);
             PauseGameLogic();
+            currentRoundLevel += 1;
+
             ShowGameStartUI();
         }
 
@@ -118,16 +122,7 @@ namespace _Scripts.State
             SpawnPlayer();
             if(includeGhosts) SpawnGhosts();
         }
-
-        public void StartNewLevel()
-        {
-            DespawnPlayer();
-            ChangeLevel(currentLevel);
-            PauseGameLogic();
-            SpawnPlayer();
-            ShowGameStartUI();
-        }
-
+        
         void EndRound(string endRoundReason = "")
         {
             EndRound(true, endRoundReason);
@@ -141,7 +136,10 @@ namespace _Scripts.State
                 RoundFailureLogic();
                 return;
             }
-            ChangeLives(-1);
+            if (!timeOver)
+            {
+                ChangeLives(-1);
+            }
             StartNewRound();
         }
 
@@ -198,6 +196,7 @@ namespace _Scripts.State
             {
                 _canvas.gameObject.SetActive(false);
             }
+            UiManager.Instance.ChangeText(UiElementType.Rounds, currentRoundLevel.ToString());
             GamePauseLogicManager.Instance.ResumeGame(isPauseMenu);
         }
 
@@ -289,7 +288,7 @@ namespace _Scripts.State
         }
 
         void ShowGameStartUI()
-        {
+        { 
             _canvas.gameObject.SetActive(true);
         }
 

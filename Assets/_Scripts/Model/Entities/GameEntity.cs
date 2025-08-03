@@ -8,10 +8,11 @@ namespace _Scripts.Model.Entities
     public class GameEntity : ValidatedMonoBehaviour
     {
         readonly Dictionary<Type, IEntityModule> _modules = new();
-
+        public EntityDefinition definition;
         public virtual void Initialize(EntityDefinition definition)
         {
             IEntityModule[] modules = GetComponentsInChildren<IEntityModule>(true);
+            this.definition = definition;
             Debug.Log($"Modules found: {modules.Length}");
             foreach (var module in modules)
             {

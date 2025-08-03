@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace _Scripts.Model.Entities
 {
@@ -12,5 +13,6 @@ namespace _Scripts.Model.Entities
         public GameObject entityPrefab;
         public string entityName;
         public float BaseSpeed;
+        public VisualEffect spawnEffect;
     }
 }

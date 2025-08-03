@@ -70,7 +70,7 @@ namespace _Scripts.State
 
         void LoadMainMenu()
         {
-            SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 
         }
 

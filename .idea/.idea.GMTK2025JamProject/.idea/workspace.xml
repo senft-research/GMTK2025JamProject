@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="">
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BoldPixels1.3 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BoldPixels1.3 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,25 +40,20 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Downloads/OMG_Snake-master/Assets/Code/SnakeController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/GameGui.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/Scenes/_EntryPoint.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TestPoolBootStrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Collideable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Collidables/Trash/TrashItem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Level/LevelDefinition.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Model/Pickables/IPickableVisitor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/Model/Trackables/ITrackable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/jordan/GMTK2025JamProject/Assets/_Scripts/State/MainGameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/GamePauseLogicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/State/Pausing/IPausable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/SoundData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Runtime/Data/UniversalRenderPipelineAsset.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Runtime/UniversalRendererData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@975ba6f21007/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -76,7 +74,7 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature-final__level__logic&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-effects__and__animation&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/jordan/GMTK2025JamProject&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -165,6 +163,8 @@
       <workItem from="1754072087951" duration="15398000" />
       <workItem from="1754090010665" duration="4868000" />
       <workItem from="1754145187615" duration="17434000" />
+      <workItem from="1754187648687" duration="669000" />
+      <workItem from="1754223180129" duration="3415000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -350,7 +350,47 @@
       <option name="project" value="LOCAL" />
       <updated>1754168738822</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Fixed lives logic and UI logic also.">
+      <option name="closed" value="true" />
+      <created>1754172864755</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1754172864755</updated>
+    </task>
+    <task id="LOCAL-00025" summary="- Fixed &quot;look to center&quot; spawning not working&#10;- Fixed ghost bodies eating trash (not a sentence I ever thought I'd say in my career!)">
+      <option name="closed" value="true" />
+      <created>1754176992180</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1754176992180</updated>
+    </task>
+    <task id="LOCAL-00026" summary="New effects logic">
+      <option name="closed" value="true" />
+      <created>1754181691597</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1754181691597</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Fixed lives reducing at round end bug.">
+      <option name="closed" value="true" />
+      <created>1754181902744</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1754181902744</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch">
+      <option name="closed" value="true" />
+      <created>1754225700687</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1754225700687</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,11 +417,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="GitIgnore Added" />
-    <MESSAGE value="Second git ignore attempt" />
-    <MESSAGE value="Initial Commit" />
-    <MESSAGE value="Scene Templates Settings upload" />
-    <MESSAGE value="Addition of GameState.cs" />
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="Continuing setup of base." />
     <MESSAGE value="Resharpier Reformats" />
@@ -402,6 +437,11 @@
     <MESSAGE value="Fixed bug with failure logic not triggering propperly." />
     <MESSAGE value="Fixed GUI settings in scenes to scale with resolution." />
     <MESSAGE value="Begun work on new logic for ending rounds." />
-    <option name="LAST_COMMIT_MESSAGE" value="Begun work on new logic for ending rounds." />
+    <MESSAGE value="Fixed lives logic and UI logic also." />
+    <MESSAGE value="- Fixed &quot;look to center&quot; spawning not working&#10;- Fixed ghost bodies eating trash (not a sentence I ever thought I'd say in my career!)" />
+    <MESSAGE value="New effects logic" />
+    <MESSAGE value="Fixed lives reducing at round end bug." />
+    <MESSAGE value="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch" />
   </component>
 </project>

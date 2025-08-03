@@ -15,3 +15,4 @@ MonoBehaviour:
   entityPrefab: {fileID: 1165259860007583428, guid: f98145d4c280a7dbf9fd90d00b8cbe70, type: 3}
   entityName: BaseSnake
   BaseSpeed: 15
+  spawnEffect: {fileID: 5088466990375016039, guid: 901750030da0ecf6291154a1c10a65df, type: 3}

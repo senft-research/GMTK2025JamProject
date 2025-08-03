@@ -1,6 +1,7 @@
 using System;
 using KBCore.Refs;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace _Scripts.Model.Entities
 {
@@ -24,6 +25,9 @@ namespace _Scripts.Model.Entities
 
             var spawnRotation = rotation ?? Quaternion.identity;
             Debug.Log($"Rotation is: {spawnRotation.ToString()}");
+            
+       
+            
             GameObject entityObject = Instantiate(
                 definition.entityPrefab,
                 position,
