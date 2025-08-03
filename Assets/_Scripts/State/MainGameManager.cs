@@ -34,40 +34,41 @@ namespace _Scripts.State
         #endregion
 
         SnakeEntity _playerEntity;
-
+        
         [SerializeField]
         EntityDefinition playerDefinition;
-
+        
+        [SerializeField, Child]
+        LevelCanvas _canvas;
+        
         [SerializeField]
         List<LevelDefinition> levels;
         Vector3 minRange = new(-35f, 0f, -26f);
         Vector3 maxRange = new(35f, 0f, 26f);
-
         List<TrackingModule> ghostPool = new();
         int _maxLives = 3;
         int currentLives;
-        int currentRoundLevel = 0;
-        
+        int currentRoundLevel = 1;
         LevelDefinition? _currentLevelDefinition;
-
-        [SerializeField, Child]
-        LevelCanvas _canvas;
-
+        GameObject activeTerrain;
         int currentLevel = 0;
-
         int currentScore = 0;
+        public int CurrentPoints
+        {
+            get { return currentScore; }
+            set { currentScore += value; }
+        }
 
+        #region Unity Events
         public void OnEnable()
         {
             GameManger.Instance.MainGameManager = this;
             InputHandler.OnPause += TogglePause;
         }
-
         public void OnDisable()
         {
             InputHandler.OnPause -= TogglePause;
         }
-
         void Update()
         {
             
@@ -77,7 +78,9 @@ namespace _Scripts.State
             CheckTimersRunning();
             UpdateTimers();
         }
-        
+        #endregion
+
+        #region Timer Logic
         void CheckTimersRunning()
         {
             if (!_trashSpawnTimer.IsRunning)
@@ -90,148 +93,11 @@ namespace _Scripts.State
                 _roundTimer.Start();
             }
         }
-
         void UpdateTimers()
         {
             _roundTimer.Update(Time.deltaTime);
             _trashSpawnTimer.Update(Time.deltaTime);
         }
-
-        public void StartNewGame()
-        {
-            
-            ChangeLevel(currentLevel);
-            SpawnEntites(false);
-            PauseGameLogic();
-            ShowGameStartUI();
-        }
-
-        void StartNewRound()
-        {
-            DespawnPlayer();
-            ChangeLevel(currentLevel);
-            SpawnEntites(true);
-            PauseGameLogic();
-            currentRoundLevel += 1;
-
-            ShowGameStartUI();
-        }
-
-        void SpawnEntites(bool includeGhosts = false)
-        {
-            SpawnPlayer();
-            if(includeGhosts) SpawnGhosts();
-        }
-        
-        void EndRound(string endRoundReason = "")
-        {
-            EndRound(true, endRoundReason);
-        }
-
-        void EndRound(bool timeOver, string endRoundReason = "")
-        {
-            Debug.Log($"END OF ROUND!: REASON: {endRoundReason}");
-            if (currentLives - 1 <= 0)
-            {
-                RoundFailureLogic();
-                return;
-            }
-            if (!timeOver)
-            {
-                ChangeLives(-1);
-            }
-            StartNewRound();
-        }
-
-
-        void ChangeLives(int changeAmount)
-        {
-            currentLives += changeAmount;
-            UiManager.Instance.ChangeText(UiElementType.Lives, $"{currentLives}/{_maxLives}");
-        }
-        void RoundFailureLogic()
-        {
-            PauseGameLogic();
-            _canvas.SetLevelText(
-                "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
-            _canvas.SetObjectives(null);
-            _canvas.SetMainMenuButton(true, false);
-            _canvas.LockCanvas();
-            ShowGameStartUI();
-        }
-
-        void TogglePause()
-        {
-            if (_canvas == null)
-            {
-                Debug.LogWarning("MainGameManager: Canvas is null!");
-                return;
-            }
-            
-            if (_canvas.IsLocked())
-            {
-                return;
-            }
-            if (_canvas.gameObject.activeInHierarchy)
-            {
-                ResumeGameLogic();
-                return;
-            }
-            _canvas.SetObjectives(null);
-            _canvas.SetLevelText("Paused");
-            _canvas.SetMainMenuButton(true, true);
-            PauseGame();
-        }
-
-        void PauseGame()
-        {
-            GamePauseLogicManager.Instance.PauseGame(true);
-            
-            _canvas.gameObject.SetActive(true);
-        }
-        
-        void PauseGameLogic()
-        {
-            GamePauseLogicManager.Instance.PauseGame(true);
-        }
-
-        public void ResumeGameLogic(bool isPauseMenu = false)
-        {
-            if (_canvas.gameObject.activeSelf)
-            {
-                _canvas.gameObject.SetActive(false);
-            }
-            UiManager.Instance.ChangeText(UiElementType.Rounds, currentRoundLevel.ToString());
-            GamePauseLogicManager.Instance.ResumeGame(isPauseMenu);
-        }
-
-        public void SpawnGhosts(int amount = 1)
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                ghostPool[Random.Range(0,ghostPool.Count)].ResetReplay();
-            }
-        }
-        
-        public void EndGame(bool playerWon) { }
-
-        GameObject activeTerrain;
-
-        void LoadTerrain()
-        {
-            if (_currentLevelDefinition == null)
-            {
-                Debug.LogError("No level selected!");
-                return;
-            }
-
-            activeTerrain = Instantiate(
-                _currentLevelDefinition.terrainPrefab,
-                new Vector3(0, -2, 0),
-                Quaternion.identity
-            );
-        }
-
         void SetTimers()
         {
             _roundTimer = new GameLogicTimer(_currentLevelDefinition.roundDuration);
@@ -253,61 +119,31 @@ namespace _Scripts.State
                 SpawnRandomTrash(GetRandomSpawnPosition(minRange, maxRange));
             };
         }
+        #endregion
 
-        void UnloadTerrain()
+        #region Main Game Start Logic
+        public void StartNewGame()
         {
-            if (activeTerrain != null)
-                Destroy(activeTerrain);
+            
+            ChangeLevel(currentLevel);
+            SpawnEntites(false);
+            PauseGameLogic();
+            ShowGameStartUI();
         }
-
-        void SpawnPlayer()
+        void StartNewRound()
         {
-            Vector3 randomSpawnPosition = GetRandomSpawnPosition(minRange, maxRange);
-            Quaternion rotation = CenterRotation(randomSpawnPosition);
-            _playerEntity = EntitySpawner.CreateEntity<SnakeEntity>(
-                playerDefinition,
-                randomSpawnPosition,
-                transform,
-                rotation
-            );
+            DespawnPlayer();
+            ChangeLevel(currentLevel);
+            SpawnEntites(true);
+            PauseGameLogic();
+            currentRoundLevel += 1;
 
-            _playerEntity.TrackingModule.StartTracking();
-            _playerEntity.OnCollision += CollisionEndRound;
+            ShowGameStartUI();
         }
-        public void CollisionEndRound(Collider other)
-        {
-            EndRound(false, $"{other.name}");
-        }
-
-        void DespawnPlayer()
-        {
-            _playerEntity.TrackingModule.StopTracking();
-            _playerEntity.TrackingModule.InitReplayableEntity(CollisionEndRound,false);
-            _playerEntity.RemoveBodies();
-            _playerEntity.gameObject.SetActive(false);
-            if (_playerEntity.TrackingModule.TrackingDataCount == 0)
-            {
-                return;
-            }
-            ghostPool.Add(_playerEntity.TrackingModule);
-        }
-
-        void ShowGameStartUI()
-        { 
-            _canvas.gameObject.SetActive(true);
-        }
-
-        public void ShowGameOverScreen() { }
-
-        public void ResetGame() { }
-
-        public void Cleanup() { }
-
         void ChangeLevel(int levelNumber)
         {
             if (levelNumber < 0 || levelNumber >= levels.Count)
             {
-                Debug.LogError("Invalid level number!");
                 return;
             }
 
@@ -326,6 +162,165 @@ namespace _Scripts.State
             GameManger.Instance.SetInputHandlerCamera(Camera.main);
         }
 
+        void LoadTerrain()
+        {
+            if (_currentLevelDefinition == null)
+            {
+                return;
+            }
+
+            activeTerrain = Instantiate(
+                _currentLevelDefinition.terrainPrefab,
+                new Vector3(0, -2, 0),
+                Quaternion.identity
+            );
+        }
+        void SpawnEntites(bool includeGhosts = false)
+        {
+            SpawnPlayer();
+            if(includeGhosts) SpawnGhosts(ghostPool.Count);
+        }
+        void SpawnPlayer()
+        {
+            Vector3 randomSpawnPosition = GetRandomSpawnPosition(minRange, maxRange);
+            Quaternion rotation = CenterRotation(randomSpawnPosition);
+            _playerEntity = EntitySpawner.CreateEntity<SnakeEntity>(
+                playerDefinition,
+                randomSpawnPosition,
+                transform,
+                rotation
+            );
+
+            _playerEntity.TrackingModule.StartTracking();
+            _playerEntity.OnCollision += CollisionEndRound;
+        }
+        Quaternion CenterRotation(Vector3 position)
+        {       var dx = -position.x;
+            var dz = -position.z;
+            float angleRadians = Mathf.Atan2(dx, dz);
+            var angleDegrees = angleRadians * Mathf.Rad2Deg;
+            Quaternion angleRot = Quaternion.Euler(0f, angleDegrees, 0f);
+            return angleRot;
+        }
+        void SpawnGhosts(int amount = 1)
+        {
+            
+            for (int i = 0; i < amount; i++)
+            {
+                ghostPool[i].ResetReplay();
+            }
+        }
+        #endregion
+
+        #region End Round Logic
+        void EndRound(string endRoundReason = "")
+        {
+            EndRound(true, endRoundReason);
+        }
+        void EndRound(bool timeOver, string endRoundReason = "")
+        {
+            Debug.Log($"END OF ROUND!: REASON: {endRoundReason}");
+            if (timeOver)
+            {
+                StartNewRound();
+                return;
+
+            }
+            
+            ChangeLives(-1);
+            
+            if (currentLives > 0)
+            {
+                StartNewRound();
+                return;
+            }
+            RoundFailureLogic();
+            
+        }
+        public void CollisionEndRound(Collider other)
+        {
+            EndRound(false, $"{other.name}");
+        }
+
+        void DespawnPlayer()
+        {
+            _playerEntity.TrackingModule.StopTracking();
+            _playerEntity.TrackingModule.InitReplayableEntity(CollisionEndRound,false);
+            _playerEntity.RemoveBodies();
+            _playerEntity.gameObject.SetActive(false);
+            if (_playerEntity.TrackingModule.TrackingDataCount == 0)
+            {
+                return;
+            }
+            ghostPool.Add(_playerEntity.TrackingModule);
+        }
+        void RoundFailureLogic()
+        {
+            PauseGameLogic();
+            _canvas.SetLevelText(
+                "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
+            _canvas.SetObjectives(null);
+            _canvas.SetMainMenuButton(true, false);
+            _canvas.LockCanvas();
+            ShowGameStartUI();
+        }
+        void UnloadTerrain()
+        {
+            if (activeTerrain != null)
+                Destroy(activeTerrain);
+        }
+        void ChangeLives(int changeAmount)
+        {
+            currentLives += changeAmount;
+            UiManager.Instance.ChangeText(UiElementType.Lives, $"{currentLives}/{_maxLives}");
+        }
+
+        #endregion
+        
+        #region Pause Logic
+        void TogglePause()
+        {
+            if (_canvas == null)
+            {
+                return;
+            }
+            
+            if (_canvas.IsLocked())
+            {
+                return;
+            }
+            if (_canvas.gameObject.activeInHierarchy)
+            {
+                ResumeGameLogic();
+                return;
+            }
+            _canvas.SetObjectives(null);
+            _canvas.SetLevelText("Paused");
+            _canvas.SetMainMenuButton(true, true);
+            PauseGame();
+        }
+        void PauseGame()
+        {
+            GamePauseLogicManager.Instance.PauseGame(true);
+            
+            _canvas.gameObject.SetActive(true);
+        }
+        void PauseGameLogic()
+        {
+            GamePauseLogicManager.Instance.PauseGame(true);
+        }
+        public void ResumeGameLogic(bool isPauseMenu = false)
+        {
+            if (_canvas.gameObject.activeSelf)
+            {
+                _canvas.gameObject.SetActive(false);
+            }
+            UiManager.Instance.ChangeText(UiElementType.Rounds, currentRoundLevel.ToString());
+            GamePauseLogicManager.Instance.ResumeGame(isPauseMenu);
+        }
+        #endregion
+
+        #region Trash Spawn Logic
         void SpawnRandomTrash(Vector3 spawnPosition)
         {
             if (_currentLevelDefinition == null)
@@ -339,15 +334,6 @@ namespace _Scripts.State
                 Quaternion.identity
             );
         }
-
-        
-
-        public int CurrentPoints
-        {
-            get { return currentScore; }
-            set { currentScore += value; }
-        }
-        
         Vector3 GetRandomSpawnPosition(Vector3 minRange, Vector3 maxRange)
         {
             return new Vector3(
@@ -356,14 +342,11 @@ namespace _Scripts.State
                 Random.Range(minRange.z, maxRange.z)
             );
         }
+        #endregion
         
-        Quaternion CenterRotation(Vector3 position)
-        {       var dx = -position.x;
-                var dz = -position.z;
-                float angleRadians = Mathf.Atan2(dx, dz);
-                var angleDegrees = angleRadians * Mathf.Rad2Deg;
-                Quaternion angleRot = Quaternion.Euler(0f, angleDegrees, 0f);
-                return angleRot;
+        void ShowGameStartUI()
+        { 
+            _canvas.gameObject.SetActive(true);
         }
   
     }

@@ -57,12 +57,10 @@ namespace _Scripts.Util.Pools
             }
             else
             {
-                Debug.Log($"Found pool item {spawnableObject.name}");
                 spawnableObject.transform.position = spawnPosition;
                 spawnableObject.transform.rotation = spawnRotation;
                 pool.InactiveObjects.Remove(spawnableObject);
             }
-            Debug.Log("Instantiating new object!");
             if (spawnEffect != null)
             {
                 VisualEffect effect = Instantiate(spawnEffect, spawnPosition, spawnRotation);
