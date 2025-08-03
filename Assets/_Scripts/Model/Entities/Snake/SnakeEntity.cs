@@ -363,7 +363,6 @@ namespace _Scripts.Model.Entities.Snake
 
         public void Visit(IPickable pickable)
         {
-            Debug.Log("Visiting!");
             if (pickable is TrashItem trash)
             {
                 trash.Effects().ForEach(effect => effect.ApplyEffect(this));

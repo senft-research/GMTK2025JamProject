@@ -25,7 +25,6 @@ namespace _Scripts.Model.Collidables
                 rotation ?? Quaternion.identity);
             
             
-            Debug.Log($"Spawned new object {trashItem.gameObject.name}");
             var trashComponent = trashItem.GetComponent<T>();
             trashComponent.SetupTrash(definition);
             trashComponent.transform.SetParent(parent);

@@ -24,7 +24,6 @@ namespace _Scripts.Model.Entities
             }
 
             var spawnRotation = rotation ?? Quaternion.identity;
-            Debug.Log($"Rotation is: {spawnRotation.ToString()}");
             
        
             
