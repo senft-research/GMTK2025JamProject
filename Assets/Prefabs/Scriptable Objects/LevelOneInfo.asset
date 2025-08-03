@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a32c6cce3b4f8abecd6bfb6fcbc437, type: 3}
   m_Name: LevelOneInfo
   m_EditorClassIdentifier: 
-  InfoText: Welcome, you have been chosen or have been chosen
+  InfoText: Simulation Start\nWelcome to our proprietary Vacuum Simulator! With this
+    software, you will be controlling one of our vacuum units whereupon once a round
+    finishes, the program will replay your actions and you are required to avoid
+    them on subsequent simulations.
   objectives:
   - Collect Trash
-  - Survive
-  - Yes
+  - Don't crash into yourself
+  - Don't crash into walls
+  - Don't let other sims crash into you
