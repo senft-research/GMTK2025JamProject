@@ -224,7 +224,6 @@ namespace _Scripts.State
             {
                 StartNewRound();
                 return;
-
             }
             
             ChangeLives(-1);
