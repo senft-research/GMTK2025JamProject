@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _Scripts.Model.Entities;
 using _Scripts.Model.Entities.Snake;
@@ -15,7 +16,7 @@ namespace _Scripts.Model.Trackables
         SnakeEntity ghostSnake;
         
         EntityDefinition definition;
-        
+        Action<Collider>? collisionHandler;
         [SerializeField]
         EntityDefinition? ghostDefinition;
         
@@ -23,7 +24,10 @@ namespace _Scripts.Model.Trackables
         int _playbackIndex = 0;
         bool _isTracking = false;
         bool _isReplaying = false;
-
+        public int TrackingDataCount
+        {
+            get { return _trackingData.Count; }
+        }
 
         public void Initialize(EntityDefinition definition)
         {
@@ -42,9 +46,21 @@ namespace _Scripts.Model.Trackables
             {
                 ResetReplay();
             }
-            SnakeInputFrame currentFrameAction = _trackingData[_playbackIndex];
-            _playbackIndex += 1;
-            return currentFrameAction;
+            try
+            {
+                SnakeInputFrame currentFrameAction = _trackingData[_playbackIndex];
+                _playbackIndex += 1;
+                return currentFrameAction;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+#if UNITY_EDITOR
+                Debug.LogError($"Playback index out of range on object: {gameObject.name}", gameObject);
+                UnityEditor.Selection.activeGameObject = gameObject; // Selects it in Hierarchy
+                UnityEditor.EditorGUIUtility.PingObject(gameObject); // Pings it (flashes blue)
+#endif
+                throw;
+            }
         }
 
         public bool IsTracking() => _isTracking;
@@ -61,8 +77,10 @@ namespace _Scripts.Model.Trackables
 
         public bool IsReplaying() => _isReplaying;
 
-        public void StartReplay()
+        public void InitReplayableEntity(Action<Collider>? collisionHandler,bool startActive = true)
         {
+            this.collisionHandler ??= collisionHandler;
+            
             _isReplaying = true;
             _isTracking = false;
             if (ghostDefinition != null)
@@ -73,7 +91,8 @@ namespace _Scripts.Model.Trackables
                         _entity.InitialRotation);
             ghostSnake.TrackingModule = this;
             ghostSnake.isGhost = true;
-            ghostSnake.gameObject.SetActive(true);
+            if(collisionHandler != null) ghostSnake.OnCollision += this.collisionHandler;
+            ghostSnake.gameObject.SetActive(startActive);
 
         }
 
@@ -81,12 +100,14 @@ namespace _Scripts.Model.Trackables
         {
             _playbackIndex = 0;
             Destroy(ghostSnake.gameObject);
-            StartReplay();
+            InitReplayableEntity(collisionHandler);
+            
         }
 
         public void StopReplay()
         {
-            throw new System.NotImplementedException();
+            _playbackIndex = 0;
+            Destroy(ghostSnake.gameObject);
         }
     }
 }

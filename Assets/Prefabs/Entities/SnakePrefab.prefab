@@ -69,8 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a813a28c00c90e0bac400512b86614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  definition: {fileID: 0}
   isGhost: 0
-  steerSpeed: 180
+  steerSpeed: 250
   distanceBetween: 0.01
   gap: 310
   bodyPrefab: {fileID: 4892652117957592343, guid: b119c2acd333c05e393efd994485c7ab, type: 3}
@@ -195,9 +196,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -5824510187379060028, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -2045257923548263128, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -1599826595754709761, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -466329591000292508, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -391268320553695201, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: -208595431880416365, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: 281855664364225751, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
       propertyPath: m_Name
       value: SnakeHead
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: 8473b480eb0744438a295fd66f1f7b42, type: 3}
+      propertyPath: m_TagString
+      value: Snake
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

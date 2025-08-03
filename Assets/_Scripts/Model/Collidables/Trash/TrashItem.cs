@@ -23,6 +23,19 @@ namespace _Scripts.Model.Collidables.Trash
         protected override void OnCollide(Collider? other = null)
         {
             base.OnCollide(other);
+            if (other != null)
+            {
+                if (other.TryGetComponent(out SnakeEntity entity) && entity.isGhost)
+                {
+                    return;
+                }
+
+                if (other.TryGetComponent(out SnakeBody body))
+                {
+                    return;
+                }
+            }
+            
             PickupTrash();
         }
 

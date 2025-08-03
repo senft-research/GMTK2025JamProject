@@ -6,17 +6,19 @@ using _Scripts.Model.Collidables.Trash;
 using _Scripts.Model.Pickables;
 using _Scripts.Model.Trackables;
 using _Scripts.State.Pausing;
+using _Scripts.Util;
 using _Scripts.Util.Pools;
+using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.VFX;
 
 namespace _Scripts.Model.Entities.Snake
 {
     public class SnakeEntity : GameEntity, IPickableVisitor, IPausable
     {
         public bool isGhost;
-
-
+        readonly InputHandler _inputHandler = InputHandler.Instance;
         #region Position Properties
         public Vector3 InitialPosition { get; private set; }
         public Quaternion InitialRotation { get; private set; }
@@ -28,6 +30,7 @@ namespace _Scripts.Model.Entities.Snake
 
         #region Speed Properties
         float baseSpeed;
+        float boosterSpeed;
         float moveSpeed;
         Coroutine? speedBoostCoroutine;
 
@@ -46,7 +49,7 @@ namespace _Scripts.Model.Entities.Snake
         List<SnakeBody> BodyParts = new();
         bool _bodySpawnedThisFrame = false;
         
-        public event Action<Collider> OnCollision; 
+        public event Action<Collider>? OnCollision; 
 
         #endregion
 
@@ -68,32 +71,40 @@ namespace _Scripts.Model.Entities.Snake
                 PositionsHistory.Add(transform.position);
             }
             
-        }
+        } 
 
         void OnEnable()
         {
             GamePauseLogicManager.Instance.Register(this);
         }
-
+        
         void OnDisable()
         {
             GamePauseLogicManager.Instance.Unregister(this);
-
+            RemoveBodies();
         }
 
         void FixedUpdate()
         {
             {
                 if (GamePauseLogicManager.Instance.IsPaused) return;
+                Vector2? inputVector = _inputHandler.GetMovementDirection(transform.position);
+                Vector3? moveVectorDirection = null;
+                if (inputVector.HasValue)
+                {
+                    moveVectorDirection = new Vector3(inputVector.Value.x, 0, inputVector.Value.y);
+                }
+                
+                
                 float steerDirection = Input.GetAxis("Horizontal");
-
+                float currentSpeed = moveSpeed + boosterSpeed;
                 if (TrackingModule.IsTracking())
                 {
-                    _currentInputFrame = new SnakeInputFrame(
+                    _currentInputFrame = new SnakeInputFrame(moveVectorDirection,
                         steerDirection,
                         Time.fixedDeltaTime,
                         _bodySpawnedThisFrame,
-                        moveSpeed
+                        currentSpeed
                     );
 
                     TrackingModule.TrackAction(_currentInputFrame);
@@ -101,6 +112,8 @@ namespace _Scripts.Model.Entities.Snake
                         firstInputFrameMade = true;
 
                     _bodySpawnedThisFrame = false;
+
+                    CameraController.Instance.UpdateCameraPosition(transform.position);
                 }
                 else if (TrackingModule.IsReplaying() && isGhost)
                 {
@@ -116,10 +129,11 @@ namespace _Scripts.Model.Entities.Snake
                 else
                 {
                     _currentInputFrame = new SnakeInputFrame(
+                        moveVectorDirection,
                         steerDirection,
                         Time.fixedDeltaTime,
                         _bodySpawnedThisFrame,
-                        moveSpeed
+                        currentSpeed
                     );
                 }
 
@@ -131,7 +145,21 @@ namespace _Scripts.Model.Entities.Snake
                 float currentMoveSpeed = _currentInputFrame.moveSpeed;
 
                 transform.position += transform.forward * (currentMoveSpeed * dt);
-                transform.Rotate(Vector3.up * (steer * steerSpeed * dt));
+                
+                //transform.Rotate(Vector3.up * (steer * steerSpeed * dt));
+
+                if (_currentInputFrame.moveDirection.HasValue)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(_currentInputFrame.moveDirection.Value);
+                    transform.rotation = Quaternion.RotateTowards(
+                        transform.rotation,
+                        targetRotation,
+                        steerSpeed * dt
+                    );
+                }
+                
+                
+                
 
                 Vector3 currentFrontPosition = PositionsHistory.First();
                 Vector3 difference = transform.position - currentFrontPosition;
@@ -164,6 +192,18 @@ namespace _Scripts.Model.Entities.Snake
                     {
                         Quaternion newRotation = Quaternion.LookRotation(moveDirection);
                         body.transform.SetPositionAndRotation(newPosition, newRotation);
+                        if (!body.isInCorrectLocation)
+                        {
+                            body.isInCorrectLocation = true;
+                            VisualEffect effect = body.GetComponentInChildren<VisualEffect>();
+                            if (effect != null)
+                            {
+                                effect.gameObject.SetActive(true);
+                                effect.Play();
+                                StartCoroutine(DisableAfterDelay(effect.gameObject, 1f));
+                            }
+                   
+                        }
                     }
                     else
                     {
@@ -183,18 +223,41 @@ namespace _Scripts.Model.Entities.Snake
                 PositionsHistory.RemoveRange(maximumPositionHistoryLength, PositionsHistory.Count - (maximumPositionHistoryLength+1));
             }
         }
-        
+        IEnumerator DisableAfterDelay(GameObject obj, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            obj.SetActive(false);
+        }
+
         void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Snake") || other.CompareTag("Wall"))
+            bool bothGhosts = false;;
+            bool isSnake = other.CompareTag("Snake");
+            SnakeEntity? collidedSnake;
+            SnakeBody? snakeBody;
+            
+            if (other.gameObject.TryGetComponent(out collidedSnake))
+            {
+                if (collidedSnake != null)
+                    bothGhosts = collidedSnake.isGhost && isGhost;
+            }
+
+            if (other.gameObject.TryGetComponent(out snakeBody))
+            {
+                if (snakeBody != null)
+                {
+                    bothGhosts = snakeBody.isGhost && isGhost;
+                }
+            }
+         
+            if (isSnake && !bothGhosts|| (other.CompareTag("Wall") && !isGhost))
             {
                 if (other.gameObject.TryGetComponent(out SnakeBody body) && body.isSpawning)
                 {
                     body.isSpawning = false;
                     return;
                 }
-                OnCollision.Invoke(other);
-                //TODO need level reset logic here
+                OnCollision?.Invoke(other);
                 return;
             }
 
@@ -206,10 +269,24 @@ namespace _Scripts.Model.Entities.Snake
 
         void OnDestroy()
         {
+            GamePauseLogicManager.Instance.Unregister(this);
+            RemoveBodies();
+        }
+
+        public void RemoveBodies()
+        {
             foreach (var bodyPart in BodyParts)
             {
+                bodyPart.isInCorrectLocation = false;
+                VisualEffect effect = bodyPart.GetComponentInChildren<VisualEffect>();
+                if (effect != null && effect.gameObject != null)
+                {
+                    bodyPart.GetComponentInChildren<VisualEffect>().gameObject.SetActive(false);
+                }
+               
                 ObjectPoolManager.Instance.ReturnObjectToPool(bodyPart);
             }
+            BodyParts.Clear(); 
         }
         #endregion
 
@@ -266,14 +343,21 @@ namespace _Scripts.Model.Entities.Snake
                         ? BodyParts[BodyParts.Count - 1].transform.position
                         : transform.position - transform.forward * (gap * 0.1f);
             }
+            
             GameObject body = ObjectPoolManager.Instance.SpawnObject(
                 bodyPrefab,
                 spawnPosition,
-                Quaternion.identity
+                Quaternion.identity, definition.spawnEffect
             );
+            SnakeBody bodyToAdd = body.GetComponent<SnakeBody>();
             if (BodyParts.Count != 0)
-                body.GetComponent<SnakeBody>().isSpawning = false;
-            BodyParts.Add(body.GetComponent<SnakeBody>());
+                bodyToAdd.isSpawning = false;
+
+            if (isGhost)
+            {
+                bodyToAdd.isGhost = true;
+            }
+            BodyParts.Add(bodyToAdd);
             _bodySpawnedThisFrame = true;
         }
 

@@ -119,6 +119,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &459175957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 459175959}
+  - component: {fileID: 459175958}
+  m_Layer: 0
+  m_Name: GamePauseLogicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &459175958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459175957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c71f4df53c4634bb2da4c6dbc69bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &459175959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459175957}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 181.07008, y: 49.98005, z: 37.01082}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560165168
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,30 +394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags:
   - Snake
-  soundData:
-    clip: {fileID: 8300000, guid: dc36ffaade2f03ffd81f480ac9eba07f, type: 3}
-    mixerGroup: {fileID: 24300002, guid: a359baff02990085c923fec3c12d3b06, type: 2}
-    loop: 0
-    playOnAwake: 0
-    frequentSound: 0
-    mute: 0
-    bypassEffects: 0
-    bypassListenerEffects: 0
-    bypassReverbZones: 0
-    priority: 128
-    volume: 0.22
-    pitch: 2
-    panStereo: 0
-    spatialBlend: 0
-    reverbZoneMix: 1
-    dopplerLevel: 1
-    spread: 0
-    minDistance: 1
-    maxDistance: 500
-    ignoreListenerVolume: 0
-    ignoreListenerPause: 0
-    rolloffMode: 1
-  trashEffects: []
 --- !u!54 &1276950734
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -848,30 +868,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags:
   - Snake
-  soundData:
-    clip: {fileID: 8300000, guid: dc36ffaade2f03ffd81f480ac9eba07f, type: 3}
-    mixerGroup: {fileID: 24300002, guid: a359baff02990085c923fec3c12d3b06, type: 2}
-    loop: 0
-    playOnAwake: 0
-    frequentSound: 0
-    mute: 0
-    bypassEffects: 0
-    bypassListenerEffects: 0
-    bypassReverbZones: 0
-    priority: 128
-    volume: 0.22
-    pitch: 4
-    panStereo: 0
-    spatialBlend: 0
-    reverbZoneMix: 1
-    dopplerLevel: 1
-    spread: 0
-    minDistance: 1
-    maxDistance: 500
-    ignoreListenerVolume: 0
-    ignoreListenerPause: 0
-    rolloffMode: 1
-  trashEffects: []
 --- !u!54 &2058527280
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1035,6 +1031,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4800689622596277022
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 181.07008
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 49.98005
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 37.01082
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696512590665644298, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557085846576471061, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
+      propertyPath: m_Name
+      value: GhostBodyPrefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca6415b5f6be7d3029c527958be9eae9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1048,3 +1101,5 @@ SceneRoots:
   - {fileID: 2058527284}
   - {fileID: 1884099623}
   - {fileID: 2087210407}
+  - {fileID: 459175959}
+  - {fileID: 4800689622596277022}

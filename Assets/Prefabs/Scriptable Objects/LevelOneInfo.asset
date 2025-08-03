@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a32c6cce3b4f8abecd6bfb6fcbc437, type: 3}
+  m_Name: LevelOneInfo
+  m_EditorClassIdentifier: 
+  InfoText: Simulation Start\nWelcome to our proprietary Vacuum Simulator! With this
+    software, you will be controlling one of our vacuum units whereupon once a round
+    finishes, the program will replay your actions and you are required to avoid
+    them on subsequent simulations.
+  objectives:
+  - Collect Trash
+  - Don't crash into yourself
+  - Don't crash into walls
+  - Don't let other sims crash into you

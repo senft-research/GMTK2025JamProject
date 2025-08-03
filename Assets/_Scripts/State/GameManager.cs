@@ -1,5 +1,9 @@
 using System;
 using System.Collections.Generic;
+using _Scripts.Util;
+using _Scripts.Util.Pools;
+using _Scripts.Util.Pools.Audio;
+using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +17,12 @@ namespace _Scripts.State
 
         public GameState gameState;
 
+        [SerializeField, Child]
+        MusicManager musicManager;
+
+        [SerializeField, Child]
+        InputHandler inputHandler;
+        
         public MainGameManager MainGameManager { private get; set; }
 
         void Awake()
@@ -26,7 +36,6 @@ namespace _Scripts.State
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
-
             SubscribeGameStates();
             SceneManager.sceneLoaded += OnSceneLoaded;
             ChangeState(GameState.MainMenu);
@@ -62,7 +71,8 @@ namespace _Scripts.State
 
         void LoadMainMenu()
         {
-            SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+            ObjectPoolManager.Instance.DeactivateAllObjects();
 
         }
 
@@ -70,6 +80,11 @@ namespace _Scripts.State
         {
             Debug.Log("Quitting Game!");
             Application.Quit();
+        }
+
+        void LoadCredits()
+        {
+            SceneManager.LoadScene("Credits", LoadSceneMode.Single);
         }
 
         void SubscribeGameStates()
@@ -86,12 +101,18 @@ namespace _Scripts.State
             _actions.Add(GameState.MainMenu, LoadMainMenu);
             _actions.Add(GameState.Quitting, QuitGame);
             _actions.Add(GameState.UnPause, () => MainGameManager.ResumeGameLogic());
+            _actions.Add(GameState.Settings, LoadCredits);
         }
 
         public int Score
         {
             get { return MainGameManager.CurrentPoints; }
             set { MainGameManager.CurrentPoints = value; }
+        }
+
+        public void SetInputHandlerCamera(Camera camera)
+        {
+            inputHandler.RaycastCamera = camera;
         }
     }
 }
