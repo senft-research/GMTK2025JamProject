@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="">
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/_EntryPoint.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Model/Entities/Snake/SnakeEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Util/Pools/Audio/MusicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BoldPixels1.3 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BoldPixels1.3 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/State/MainGameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +164,7 @@
       <workItem from="1754090010665" duration="4868000" />
       <workItem from="1754145187615" duration="17434000" />
       <workItem from="1754187648687" duration="669000" />
-      <workItem from="1754223180129" duration="1226000" />
+      <workItem from="1754223180129" duration="3415000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -383,7 +382,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754181902744</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch">
+      <option name="closed" value="true" />
+      <created>1754225700687</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1754225700687</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +417,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Addition of GameState.cs" />
     <MESSAGE value="workspace.xml" />
     <MESSAGE value="Continuing setup of base." />
     <MESSAGE value="Resharpier Reformats" />
@@ -435,6 +441,7 @@
     <MESSAGE value="- Fixed &quot;look to center&quot; spawning not working&#10;- Fixed ghost bodies eating trash (not a sentence I ever thought I'd say in my career!)" />
     <MESSAGE value="New effects logic" />
     <MESSAGE value="Fixed lives reducing at round end bug." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed lives reducing at round end bug." />
+    <MESSAGE value="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch" />
   </component>
 </project>
