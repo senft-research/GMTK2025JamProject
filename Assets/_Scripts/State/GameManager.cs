@@ -80,6 +80,11 @@ namespace _Scripts.State
             Application.Quit();
         }
 
+        void LoadCredits()
+        {
+            SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+        }
+
         void SubscribeGameStates()
         {
             _actions.Add(
@@ -94,6 +99,7 @@ namespace _Scripts.State
             _actions.Add(GameState.MainMenu, LoadMainMenu);
             _actions.Add(GameState.Quitting, QuitGame);
             _actions.Add(GameState.UnPause, () => MainGameManager.ResumeGameLogic());
+            _actions.Add(GameState.Settings, LoadCredits);
         }
 
         public int Score

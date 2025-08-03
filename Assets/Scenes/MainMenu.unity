@@ -993,9 +993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Settings
-
-'
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
   m_sharedMaterial: {fileID: 1495310432396107667, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
