@@ -58,6 +58,12 @@ namespace _Scripts.State
         public void OnEnable()
         {
             GameManger.Instance.MainGameManager = this;
+            InputHandler.OnPause += TogglePause;
+        }
+
+        public void OnDisable()
+        {
+            InputHandler.OnPause -= TogglePause;
         }
 
         void Update()
@@ -151,9 +157,34 @@ namespace _Scripts.State
             _canvas.SetLevelText(
                 "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
             _canvas.SetObjectives(null);
-            _canvas.SetMainMenuButton(true);
+            _canvas.SetMainMenuButton(true, false);
+            _canvas.LockCanvas();
             ShowGameStartUI();
         }
+
+        void TogglePause()
+        {
+            if (_canvas == null)
+            {
+                Debug.LogWarning("MainGameManager: Canvas is null!");
+                return;
+            }
+            
+            if (_canvas.IsLocked())
+            {
+                return;
+            }
+            if (_canvas.gameObject.activeInHierarchy)
+            {
+                ResumeGameLogic();
+                return;
+            }
+            _canvas.SetObjectives(null);
+            _canvas.SetLevelText("Paused");
+            _canvas.SetMainMenuButton(true, true);
+            PauseGameLogic();
+        }
+        
         void PauseGameLogic()
         {
             GamePauseLogicManager.Instance.PauseGame(false);
@@ -278,12 +309,13 @@ namespace _Scripts.State
 
             currentLevel = levelNumber;
             _currentLevelDefinition = levels[levelNumber];
+            _canvas.LockCanvas(false);
             if (_currentLevelDefinition != null)
             {
                 _canvas.SetObjectives(_currentLevelDefinition.levelInfo.objectives);
                 _canvas.SetLevelText(_currentLevelDefinition.levelInfo.InfoText);
             }
-            _canvas.SetMainMenuButton(false);
+            _canvas.SetMainMenuButton(false, false);
             SetTimers();
             UnloadTerrain();
             LoadTerrain();

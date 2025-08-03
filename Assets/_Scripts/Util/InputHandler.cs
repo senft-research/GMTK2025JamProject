@@ -11,6 +11,9 @@ namespace _Scripts.Util
         MainPlayerInput _playerInput;
         MainPlayerInput.SnakeGameActions _snakeGame;
 
+        public delegate void OnPauseDelegate();
+        public static event OnPauseDelegate OnPause;
+
         Vector2? lastHitOnWorldPoint;
         void Awake()
         {
@@ -27,7 +30,11 @@ namespace _Scripts.Util
 
             _playerInput = new MainPlayerInput();
             _snakeGame = _playerInput.SnakeGame;
+
+            _snakeGame.Pause.performed += HandlePause;
         }
+
+        private void HandlePause(InputAction.CallbackContext context) => OnPause?.Invoke();
 
         public Vector2? GetMovementDirection(Vector3 entityPosition)
         {
