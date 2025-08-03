@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1105953749}
-  gameState: 2
+  gameState: 0
 --- !u!114 &1105953749
 MonoBehaviour:
   m_ObjectHideFlags: 0
