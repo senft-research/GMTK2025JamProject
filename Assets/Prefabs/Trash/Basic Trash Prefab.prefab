@@ -151,27 +151,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTags:
   - Snake
-  soundData:
-    clip: {fileID: 8300000, guid: dc36ffaade2f03ffd81f480ac9eba07f, type: 3}
-    mixerGroup: {fileID: 24300002, guid: a359baff02990085c923fec3c12d3b06, type: 2}
-    loop: 0
-    playOnAwake: 0
-    frequentSound: 0
-    mute: 0
-    bypassEffects: 0
-    bypassListenerEffects: 0
-    bypassReverbZones: 0
-    priority: 128
-    volume: 0.22
-    pitch: 1.49
-    panStereo: 0
-    spatialBlend: 0
-    reverbZoneMix: 1
-    dopplerLevel: 1
-    spread: 0
-    minDistance: 1
-    maxDistance: 500
-    ignoreListenerVolume: 0
-    ignoreListenerPause: 0
-    rolloffMode: 1
-  trashEffects: []
