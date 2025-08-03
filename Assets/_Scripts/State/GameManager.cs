@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.Util;
+using _Scripts.Util.Pools;
 using _Scripts.Util.Pools.Audio;
 using KBCore.Refs;
 using UnityEngine;
@@ -71,6 +72,7 @@ namespace _Scripts.State
         void LoadMainMenu()
         {
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+            ObjectPoolManager.Instance.DeactivateAllObjects();
 
         }
 
