@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Final logic fixes added.">
+    <list default="true" id="0759b8b0-cccf-45e4-bf89-dab9bde9925b" name="Changes" comment="Trash Sound effects fixed.">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025JamProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BoldPixels1.3 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BoldPixels1.3 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Trash/BananaPeel/BananaPeelTrash.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Trash/BananaPeel/BananaPeelTrash.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Trash/Bottle/BottleTrash.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Trash/Bottle/BottleTrash.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Trash/EnergyDrink/EnergyDrinkTrash.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Trash/EnergyDrink/EnergyDrinkTrash.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Trash/Sock/SockTrash.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Trash/Sock/SockTrash.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature-final_tweaks_and_testing_of_logic" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -172,7 +170,7 @@
       <workItem from="1754090010665" duration="4868000" />
       <workItem from="1754145187615" duration="17434000" />
       <workItem from="1754187648687" duration="669000" />
-      <workItem from="1754223180129" duration="7411000" />
+      <workItem from="1754223180129" duration="8454000" />
     </task>
     <task id="LOCAL-00001" summary="GitIgnore Added">
       <option name="closed" value="true" />
@@ -414,7 +412,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754230428384</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Trash Sound effects fixed.">
+      <option name="closed" value="true" />
+      <created>1754230826247</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1754230826248</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +447,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Resharpier Reformats" />
     <MESSAGE value="Initial pool logic" />
     <MESSAGE value="Forgot Sample Scene" />
     <MESSAGE value="Refactoring some files" />
@@ -466,6 +471,7 @@
     <MESSAGE value="Added bold pixel font&#10;Improved Main Menu UI&#10;Fixed logic with main level launch" />
     <MESSAGE value="Added custom font to buttons" />
     <MESSAGE value="Final logic fixes added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Final logic fixes added." />
+    <MESSAGE value="Trash Sound effects fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Trash Sound effects fixed." />
   </component>
 </project>
