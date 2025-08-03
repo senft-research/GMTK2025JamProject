@@ -249,8 +249,15 @@ namespace _Scripts.Model.Entities.Snake
                     bothGhosts = snakeBody.isGhost && isGhost;
                 }
             }
+
+            if (isGhost && other.TryGetComponent(out SnakeEntity entity))
+            {
+                Debug.Log("The main collider was a ghost and was hitting a non Ghost player");
+                return;
+                
+            }
          
-            if (isSnake && !bothGhosts|| (other.CompareTag("Wall") && !isGhost))
+            if (isSnake && !bothGhosts || (other.CompareTag("Wall") && !isGhost))
             {
                 if (other.gameObject.TryGetComponent(out SnakeBody body) && body.isSpawning)
                 {
