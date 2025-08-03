@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
+  m_sharedMaterial: {fileID: 1495310432396107667, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 64.7
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -327,15 +327,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
+  m_sharedMaterial: {fileID: 1495310432396107667, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281348149
+  m_fontColor: {r: 0.18003243, g: 0.16455944, b: 0.16455944, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -781,8 +781,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
+  m_sharedMaterial: {fileID: 1495310432396107667, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 64.7
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -1055,8 +1055,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
+  m_sharedMaterial: {fileID: 1495310432396107667, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 64.7
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -1294,7 +1294,6 @@ MonoBehaviour:
   levelObjectives: {fileID: 256376974}
   levelText: {fileID: 1159515325}
   button: {fileID: 1219177785}
-  resumeButton: {fileID: 1253309733}
   pauseResumeButton: {fileID: 711591022}
 --- !u!1 &1159515323
 GameObject:
@@ -1369,15 +1368,15 @@ MonoBehaviour:
   m_text: If you are seeing this:\nSomething has gone wrong\nPlease restart the application
     and hope that fixes it.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
+  m_sharedMaterial: {fileID: 1495310432396107667, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4282335043
+  m_fontColor: {r: 0.2641256, g: 0.24727829, b: 0.24727829, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

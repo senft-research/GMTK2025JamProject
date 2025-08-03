@@ -71,7 +71,7 @@ namespace _Scripts.Model.Entities.Snake
                 PositionsHistory.Add(transform.position);
             }
             
-        }
+        } 
 
         void OnEnable()
         {
@@ -279,7 +279,7 @@ namespace _Scripts.Model.Entities.Snake
             {
                 bodyPart.isInCorrectLocation = false;
                 VisualEffect effect = bodyPart.GetComponentInChildren<VisualEffect>();
-                if (effect != null)
+                if (effect != null && effect.gameObject != null)
                 {
                     bodyPart.GetComponentInChildren<VisualEffect>().gameObject.SetActive(false);
                 }
