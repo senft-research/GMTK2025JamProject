@@ -57,6 +57,11 @@ namespace _Scripts.State
             InputHandler.OnPause += TogglePause;
         }
 
+        public void OnDisable()
+        {
+            InputHandler.OnPause -= TogglePause;
+        }
+
         void Update()
         {
             if (GamePauseLogicManager.Instance.IsPaused)
@@ -137,7 +142,7 @@ namespace _Scripts.State
             _canvas.SetLevelText(
                 "SIMULATION FAULT\nIf you are seeing this message, then the machine has collided into a wall or other machine, meaning this simulation has finished.\nPlease shut down the device.");
             _canvas.SetObjectives(null);
-            _canvas.SetMainMenuButton(true);
+            _canvas.SetMainMenuButton(true, false);
             _canvas.LockCanvas();
             ShowGameStartUI();
         }
@@ -149,7 +154,7 @@ namespace _Scripts.State
                 Debug.LogWarning("MainGameManager: Canvas is null!");
                 return;
             }
-
+            
             if (_canvas.IsLocked())
             {
                 return;
@@ -159,7 +164,9 @@ namespace _Scripts.State
                 ResumeGameLogic();
                 return;
             }
-
+            _canvas.SetObjectives(null);
+            _canvas.SetLevelText("Paused");
+            _canvas.SetMainMenuButton(true, true);
             PauseGameLogic();
         }
         
@@ -293,7 +300,7 @@ namespace _Scripts.State
                 _canvas.SetObjectives(_currentLevelDefinition.levelInfo.objectives);
                 _canvas.SetLevelText(_currentLevelDefinition.levelInfo.InfoText);
             }
-            _canvas.SetMainMenuButton(false);
+            _canvas.SetMainMenuButton(false, false);
             SetTimers();
             UnloadTerrain();
             LoadTerrain();

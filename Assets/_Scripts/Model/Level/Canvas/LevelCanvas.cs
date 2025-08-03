@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using _Scripts.UI.Buttons;
 using KBCore.Refs;
+using TMPro;
 using UnityEngine;
 
 namespace _Scripts.Model.Level.Canvas
@@ -15,6 +16,9 @@ namespace _Scripts.Model.Level.Canvas
 
         [SerializeField]
         GameStateButton button;
+
+        [SerializeField]
+        GameStateButton pauseResumeButton;
 
         private bool isLocked = false;
 
@@ -34,12 +38,12 @@ namespace _Scripts.Model.Level.Canvas
             }
         }
 
-        public void SetMainMenuButton(bool isActive)
+        public void SetMainMenuButton(bool isActive,bool showResume)
         {
-            if (!isLocked)
-            {
-                button.gameObject.SetActive(isActive);
-            }
+            if (isLocked) return;
+            pauseResumeButton.gameObject.SetActive(showResume);
+            button.gameObject.SetActive(isActive);
+            
         }
 
         public void LockCanvas(bool willLock = true)
