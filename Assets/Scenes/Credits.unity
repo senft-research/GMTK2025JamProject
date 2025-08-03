@@ -1069,9 +1069,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Developers:\nJordan "Senft-Research" Senft\nRichard "TheChroniclerDelta"
-    Petri\nHamunii\n\nTesters:\nLee, Paul\n\nAssets Used:\nAdammyhre - Object Pooling
-    Logic\nKyleBanks - Scene Ref Attribute\n\nCyborg Ninja - Kevin Macleod (incompetech.com)\nLicensed
-    under Creative Commons: by Attribution 3.0 License: '
+    Petri\nHamunii\n\nTesters:\nLee, Paul Hazeldine\n\nAssets Used:\nAdammyhre -
+    Object Pooling Logic\nKyleBanks - Scene Ref Attribute\n\nCyborg Ninja - Kevin
+    Macleod (incompetech.com)\nLicensed under Creative Commons: by Attribution 3.0
+    License: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
   m_sharedMaterial: {fileID: 1495310432396107667, guid: 8365e3cc3fb5c2d5181170ea3ea4115b, type: 2}
