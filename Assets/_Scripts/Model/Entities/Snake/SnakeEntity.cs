@@ -11,13 +11,13 @@ using _Scripts.Util.Pools;
 using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.VFX;
 
 namespace _Scripts.Model.Entities.Snake
 {
     public class SnakeEntity : GameEntity, IPickableVisitor, IPausable
     {
         public bool isGhost;
-
         readonly InputHandler _inputHandler = InputHandler.Instance;
         #region Position Properties
         public Vector3 InitialPosition { get; private set; }
@@ -192,6 +192,18 @@ namespace _Scripts.Model.Entities.Snake
                     {
                         Quaternion newRotation = Quaternion.LookRotation(moveDirection);
                         body.transform.SetPositionAndRotation(newPosition, newRotation);
+                        if (!body.isInCorrectLocation)
+                        {
+                            body.isInCorrectLocation = true;
+                            VisualEffect effect = body.GetComponentInChildren<VisualEffect>();
+                            if (effect != null)
+                            {
+                                effect.gameObject.SetActive(true);
+                                effect.Play();
+                                StartCoroutine(DisableAfterDelay(effect.gameObject, 1f));
+                            }
+                   
+                        }
                     }
                     else
                     {
@@ -211,7 +223,12 @@ namespace _Scripts.Model.Entities.Snake
                 PositionsHistory.RemoveRange(maximumPositionHistoryLength, PositionsHistory.Count - (maximumPositionHistoryLength+1));
             }
         }
-        
+        IEnumerator DisableAfterDelay(GameObject obj, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            obj.SetActive(false);
+        }
+
         void OnTriggerEnter(Collider other)
         {
             bool bothGhosts = false;;
@@ -260,9 +277,16 @@ namespace _Scripts.Model.Entities.Snake
         {
             foreach (var bodyPart in BodyParts)
             {
+                bodyPart.isInCorrectLocation = false;
+                VisualEffect effect = bodyPart.GetComponentInChildren<VisualEffect>();
+                if (effect != null)
+                {
+                    bodyPart.GetComponentInChildren<VisualEffect>().gameObject.SetActive(false);
+                }
+               
                 ObjectPoolManager.Instance.ReturnObjectToPool(bodyPart);
             }
-            BodyParts.Clear();
+            BodyParts.Clear(); 
         }
         #endregion
 
@@ -319,10 +343,11 @@ namespace _Scripts.Model.Entities.Snake
                         ? BodyParts[BodyParts.Count - 1].transform.position
                         : transform.position - transform.forward * (gap * 0.1f);
             }
+            
             GameObject body = ObjectPoolManager.Instance.SpawnObject(
                 bodyPrefab,
                 spawnPosition,
-                Quaternion.identity
+                Quaternion.identity, definition.spawnEffect
             );
             SnakeBody bodyToAdd = body.GetComponent<SnakeBody>();
             if (BodyParts.Count != 0)

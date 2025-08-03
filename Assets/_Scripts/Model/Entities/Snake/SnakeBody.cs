@@ -6,7 +6,7 @@ namespace _Scripts.Model.Entities.Snake
     public class SnakeBody : Collideable, IPoolable
     {
         public bool isSpawning = true;
-
+        public bool isInCorrectLocation;
         public bool isGhost = false;
         public void InitReturnLogic() { }
 

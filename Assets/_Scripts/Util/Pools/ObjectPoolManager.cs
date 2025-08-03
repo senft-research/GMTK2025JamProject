@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace _Scripts.Util.Pools
 {
@@ -28,7 +29,7 @@ namespace _Scripts.Util.Pools
         public GameObject SpawnObject(
             IPoolable poolableToSpawn,
             Vector3 spawnPosition,
-            Quaternion spawnRotation
+            Quaternion spawnRotation, VisualEffect? spawnEffect = null
         )
         {
             GameObject objectToSpawn = poolableToSpawn.PoolableObject();
@@ -51,7 +52,7 @@ namespace _Scripts.Util.Pools
             GameObject? spawnableObject = pool.InactiveObjects.FirstOrDefault();
             if (spawnableObject == null)
             {
-                Debug.Log("Instantiating new object!");
+                
                 spawnableObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
             }
             else
@@ -60,6 +61,13 @@ namespace _Scripts.Util.Pools
                 spawnableObject.transform.position = spawnPosition;
                 spawnableObject.transform.rotation = spawnRotation;
                 pool.InactiveObjects.Remove(spawnableObject);
+            }
+            Debug.Log("Instantiating new object!");
+            if (spawnEffect != null)
+            {
+                VisualEffect effect = Instantiate(spawnEffect, spawnPosition, spawnRotation);
+                effect.transform.SetParent(spawnableObject.transform);
+                effect.Stop();
             }
             spawnableObject.SetActive(true);
             spawnableObject.GetComponent<IPoolable>().InitReturnLogic();
